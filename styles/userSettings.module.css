@@ -1,0 +1,25 @@
+.mainPanel {
+  width: 90%;
+  height: 90%;
+  margin: 10px;
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: fle;
+}
+
+.dataPanel {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: lightgray;
+}
+
+.gridHeader {
+  column-span: all;
+}

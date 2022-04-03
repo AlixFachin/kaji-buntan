@@ -1,0 +1,8 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-undef": "error",
+    "semi-style": ["error", "last"],
+    "no-unused-vars": "warn"
+  }
+}

@@ -1,0 +1,17 @@
+
+.buttonPanel {
+  width: clamp(200px, 30%, 600px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1em;
+
+}
+
+.buttonPanel > button {
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
