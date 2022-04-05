@@ -7,3 +7,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.band button {
+  margin-left: 3em;
+  cursor: pointer;
+}

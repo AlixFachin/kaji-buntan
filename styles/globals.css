@@ -52,3 +52,8 @@ button {
   border-radius: 5px; 
   border-width: 0px;
 }
+
+.errorField {
+  border-width: 1px;
+  border-color: var(--error-color);
+}

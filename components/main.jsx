@@ -9,8 +9,6 @@ export default function Main() {
     
     const { user } = useContext(AuthContext);
 
-    console.dir(user);
-
     return (
         <main>
             <h1>Welcome { user.displayName }!</h1>

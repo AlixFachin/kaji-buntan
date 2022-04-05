@@ -1,0 +1,30 @@
+.recordPanel {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    row-gap: 1em;
+    column-gap: 0.5em;
+
+    border: 3px solid var(--main-color);
+    border-radius: 20px;
+
+    padding: 1em;
+
+}
+
+.recordPanel > h1 {
+    background-color: var(--main-color);
+    padding: 2px 0.5em;
+    border-radius: 10px;
+}
+
+.wideCol {
+    grid-column-end: span 2;
+}
+
+.wideRow {
+    grid-row-end: span 2;
+}
+
+.infoLabel {
+    margin: 0px;
+}
