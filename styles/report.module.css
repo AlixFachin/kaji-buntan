@@ -1,0 +1,15 @@
+
+.taskListGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 5px 10px;
+}
+
+.taskListGrid h1 {
+    grid-column: 1 / span 4;
+    text-align: center;
+}
+.taskListGrid .header {
+    text-align: center;
+    background-color: var(--main-color);
+}

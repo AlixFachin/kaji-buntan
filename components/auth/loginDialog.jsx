@@ -33,13 +33,13 @@ export default function LoginDialog({ showRegister, hideDialog }) {
     const openGoogleAuth = () => {
         signInWithPopup(firebaseAuth, googleProvider)
         .then(() => {
-            setErrorMsg('Login success!');
+            // setErrorMsg('Login success!');
             hideDialog();
         })
         .catch(error => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            setErrorMsg(`Error ${errorCode} : ${errorMessage} `);
+            // setErrorMsg(`Error ${errorCode} : ${errorMessage} `);
         })
     }
 

@@ -14,7 +14,8 @@ export default function Main() {
             <h1>Welcome { user.displayName }!</h1>
             <div className={styles.buttonPanel}>
                 <Link href="/record" passHref={true}><button>Record New Activity</button></Link>
-                <button>View Report</button>
+                <Link href="/input" passHref={true}><button>Input Routine</button></Link>
+                <Link href="/report" passHref={true}><button>View Report</button></Link>
                 <button>User Settings</button>
             </div>
         </main>

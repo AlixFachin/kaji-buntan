@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import Link from 'next/link';
 
 import { firebaseStore } from '../firebase/clientApp';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 import { AuthContext } from '../context/authContext';
 
 export default function RecordPage() {
