@@ -1,12 +1,28 @@
-# Test-Next-Firebase
+# KajiBuntan
 
-This is a very small test project for _Firebase_ and _Next.js_.
+This project is made for the Hackathon organized by Code for Japan in April-May 2022.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Front-end with Next.js / React.js
+- Back-end and database using Firebase
+- Timestamp management with Luxon
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to install the development environment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**IN PROGRESS**
+
+- Fork the repository and clone it on your machine
+- Run `npm install` to get all the necessary modules
+
+## How to contribute
+
+- Install the development environment on your machine
+- Look at an issue you want to deal with and comment on the issue that you are working on it
+- Cut a feature branch on your repository machine (`git checkout -b branchname`)
+- Work on your features, commit `git commit` and push the branch on your repository `git push origin -u mybranch`
+- Create a pull request so that your changes will be reflected in the original repository
+
+## Credits
+
+- Stock picture design by [Undraw.co](https://undraw.co/)
