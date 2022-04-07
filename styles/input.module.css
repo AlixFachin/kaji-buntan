@@ -1,0 +1,75 @@
+.inputPanel {
+    flex-grow: 1;
+    max-width: 900px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 3px solid var(--main-color);
+    border-radius: 20px;
+
+    padding: 1em;
+
+}
+
+.inputPanel > h1 {
+    background-color: var(--main-color);
+    padding: 2px 0.5em;
+    border-radius: 10px;
+}
+
+
+.categorySection {
+    border: 1px solid var(--second-color);
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 0.5em;
+    width: 100%;
+    max-width: 800px;
+}
+
+h2.categoryHeader {
+    background-color: var(--main-color);
+    border-radius: 5px;
+    position: relative;
+    top: -20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 1em;
+}
+
+.inputRow {
+
+    width: 90%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1em;
+
+}
+
+.inputRow > * {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.taskLabel {
+    flex-grow: 1;
+}
+
+.buttonRow {
+    width: clamp(100px, 80%, 500px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-bottom: 10px;
+
+
+
+}
