@@ -36,12 +36,13 @@ main {
   flex-shrink: 1;
   height: 90vh;
   max-height: 90vh;
-  max-width: 600px;
+  
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
 
 }
 

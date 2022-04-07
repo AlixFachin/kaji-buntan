@@ -9,8 +9,10 @@ export default function Layout({ children }) {
         <AuthProvider>
             <AppHeader />
                 <div className="app-container">                
-                    <Sidebar />
-                    { children }
+                    <Sidebar />                    
+                    <main>
+                        { children }
+                    </main>
                 </div>
             <AppFooter />
         </AuthProvider>

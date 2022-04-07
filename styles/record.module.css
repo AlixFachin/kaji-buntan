@@ -1,4 +1,9 @@
 .recordPanel {
+    width: 100%;
+    max-width: 600px;
+
+    margin-top: 1em;
+    
     display: grid;
     grid-template-columns: 1fr 2fr;
     row-gap: 1em;

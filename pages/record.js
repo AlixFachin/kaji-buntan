@@ -129,30 +129,29 @@ export default function RecordPage() {
 
 
     return ( 
-        <main>
-            <div className={styles.recordPanel}>
-                <h1 className={styles.wideCol}>Record new task</h1>
-                <label htmlFor="category">Category</label><input name="category" ref={categoryInput}></input>
-                <label htmlFor="taskname">Task Name</label><input name="taskname" ref={taskNameInput}></input>
-                <label className={styles.wideCol}>Description</label>
-                <textarea ref={descriptionInput} className={styles.wideCol + ' ' + styles.wideRow} name="taskdescription"></textarea>
-                <p className={styles.infoLabel}>start time</p>
-                <p className={styles.infoLabel}>
-                    { startTime ? startTime.toFormat('dd LLL yyyy HH:mm:ss') : 'this is the start time' }
-                </p>
-                <p className={styles.infoLabel}>end time</p>
-                <p className={styles.infoLabel}>
-                    { getEndTimeLabel() }
-                </p>
-                <p className={styles.infoLabel}>duration</p>
-                <p className={styles.infoLabel}>
-                    { getDurationLabel() }
-                </p>
-                <button onClick={ startRecording }>Start</button>
-                <button onClick={ stopRecording }>Stop</button>
-                <Link href="/" passHref={ true }><button>Cancel</button></Link> 
-                <button onClick={ saveRecording }>Save</button>
-            </div>
-        </main>
+        <div className={styles.recordPanel}>
+            <h1 className={styles.wideCol}>Record new task</h1>
+            <label htmlFor="category">Category</label><input name="category" ref={categoryInput}></input>
+            <label htmlFor="taskname">Task Name</label><input name="taskname" ref={taskNameInput}></input>
+            <label className={styles.wideCol}>Description</label>
+            <textarea ref={descriptionInput} className={styles.wideCol + ' ' + styles.wideRow} name="taskdescription"></textarea>
+            <p className={styles.infoLabel}>start time</p>
+            <p className={styles.infoLabel}>
+                { startTime ? startTime.toFormat('dd LLL yyyy HH:mm:ss') : 'this is the start time' }
+            </p>
+            <p className={styles.infoLabel}>end time</p>
+            <p className={styles.infoLabel}>
+                { getEndTimeLabel() }
+            </p>
+            <p className={styles.infoLabel}>duration</p>
+            <p className={styles.infoLabel}>
+                { getDurationLabel() }
+            </p>
+            <button onClick={ startRecording }>Start</button>
+            <button onClick={ stopRecording }>Stop</button>
+            <Link href="/" passHref={ true }><button>Cancel</button></Link> 
+            <button onClick={ saveRecording }>Save</button>
+        </div>
+
     )
 }
