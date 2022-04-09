@@ -1,8 +1,8 @@
 import styles from '../styles/report.module.css';
 
 import { collection, query, where, getDocs, orderBy, limit } from 'firebase/firestore';
-import { firebaseStore } from '../firebase/clientApp';
-import { AuthContext } from '../context/authContext';
+import { firebaseStore } from 'firebase/clientApp';
+import { AuthContext } from 'src/authContext';
 import { useState, useEffect, useContext, Fragment } from 'react';
 
 import { DateTime } from 'luxon';

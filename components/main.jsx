@@ -1,11 +1,11 @@
-import { AuthContext } from '../context/authContext';
 import { useContext } from 'react';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-
-import styles from '../styles/main.module.css';
 import { Box, List, ListItem } from '@mui/material';
+
+import { AuthContext } from 'src/authContext';
+import styles from 'styles/main.module.css';
 
 export default function Main() {
     

@@ -3,9 +3,9 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { DateTime } from 'luxon';
 import Link from 'next/link';
 
-import { firebaseStore } from '../firebase/clientApp';
+import { firebaseStore } from 'firebase/clientApp';
 import { addDoc, collection } from 'firebase/firestore';
-import { AuthContext } from '../context/authContext';
+import { AuthContext } from 'src/authContext';
 
 export default function RecordPage() {
 

@@ -2,9 +2,9 @@
 // This page is used as a fallback when users are not logged
 
 import Image from 'next/image';
-import AuthDialog from './auth/authDialog';
+import AuthDialog from 'components/auth/authDialog';
 import { useState } from 'react';
-import mainImage from '../public/undraw_positive_attitude_re_wu7d.svg';
+import mainImage from 'public/undraw_positive_attitude_re_wu7d.svg';
 
 
 export default function LandingPage() {

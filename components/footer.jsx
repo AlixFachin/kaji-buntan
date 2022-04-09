@@ -1,4 +1,4 @@
-import styles from '../styles/band.module.css'
+import styles from 'styles/band.module.css'
 import Link from 'next/link';
 
 export default function AppFooter() {

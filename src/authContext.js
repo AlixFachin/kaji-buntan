@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { firebaseAuth } from '../firebase/clientApp';
+import { firebaseAuth } from 'firebase/clientApp';
 import React, { useEffect, useState } from 'react';
-import LandingPage from '../components/landingPage';
+import LandingPage from 'components/landingPage';
 
 export const AuthContext = React.createContext();
 

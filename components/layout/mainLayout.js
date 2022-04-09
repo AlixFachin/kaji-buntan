@@ -1,7 +1,7 @@
-import AppHeader from '../header'
-import AppFooter from '../footer'
-import Sidebar from '../sidebar';
-import { AuthProvider } from '../../context/authContext';
+import AppHeader from 'components/header.jsx'
+import AppFooter from 'components/footer.jsx'
+import Sidebar from 'components/sidebar.jsx';
+import { AuthProvider } from 'src/authContext';
 
 export default function Layout({ children }) {
 

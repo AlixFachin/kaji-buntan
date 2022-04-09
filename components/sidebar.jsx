@@ -1,8 +1,7 @@
-import UserSettings from "./userSettings";
-
-import styles from '../styles/sidebar.module.css';
-
 import { useRef } from "react";
+
+import UserSettings from "./userSettings";
+import styles from 'styles/sidebar.module.css';
 
 export default function Sidebar() {
 

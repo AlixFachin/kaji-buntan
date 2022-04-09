@@ -1,7 +1,7 @@
-import styles from '../../styles/login.module.css'
 import { useState, useRef, useContext } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from '../../context/authContext';
+import styles from 'styles/login.module.css'
+import { AuthContext } from 'src/authContext';
 
 export default function RegisterUserDialog({ showLogin, hideDialog }) {
 

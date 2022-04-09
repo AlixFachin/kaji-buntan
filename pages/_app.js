@@ -1,10 +1,10 @@
-import '../styles/globals.css'
-import Layout from '../components/layout/mainLayout'
 import { ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
-import theme from "../src/theme";
-import createEmotionCache from "../src/createEmotionCache";
+import 'styles/globals.css'
+import Layout from 'components/layout/mainLayout'
+import theme from "src/theme";
+import createEmotionCache from "src/createEmotionCache";
 
 const clientSideEmotionCache = createEmotionCache();
 

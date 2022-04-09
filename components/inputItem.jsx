@@ -1,4 +1,4 @@
-import styles from '../styles/input.module.css';
+import styles from 'styles/input.module.css';
 
 export default function InputItem(props) {
 

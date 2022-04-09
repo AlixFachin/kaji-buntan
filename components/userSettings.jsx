@@ -1,9 +1,9 @@
 import { setDoc, doc } from 'firebase/firestore';
 import { useState, useRef, useContext } from 'react';
-import styles from '../styles/userSettings.module.css';
+import styles from 'styles/userSettings.module.css';
 
-import { firebaseStore } from '../firebase/clientApp';
-import { AuthContext } from '../context/authContext';
+import { firebaseStore } from 'firebase/clientApp';
+import { AuthContext } from 'src/authContext';
 
 function UserSettings( { currentUser }) {
 

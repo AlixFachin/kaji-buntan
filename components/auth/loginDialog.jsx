@@ -1,7 +1,8 @@
 import { useState, useRef, useContext } from 'react';
-import styles from '../../styles/login.module.css'
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { AuthContext } from '../../context/authContext';
+
+import styles from 'styles/login.module.css';
+import { AuthContext } from 'src/authContext';
 
 const googleProvider = new GoogleAuthProvider();
 

@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
 
-import styles from '../styles/authStatus.module.css';
+import styles from 'styles/authStatus.module.css';
 
-import { AuthContext } from '../context/authContext';
-import AuthDialog from './auth/authDialog';
+import { AuthContext } from 'src/authContext';
+import AuthDialog from 'components/auth/authDialog';
 
 export default function AuthStatus( ) {
     const [ isAuthDialogVisible, setAuthDialogVisibility ] = useState(false);
