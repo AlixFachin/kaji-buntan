@@ -2,7 +2,7 @@ import { setDoc, doc } from 'firebase/firestore';
 import { useState, useRef, useContext } from 'react';
 import styles from 'styles/userSettings.module.css';
 
-import { firebaseStore } from 'firebase/clientApp';
+import { firebaseStore } from 'src/firebaseApp';
 import { AuthContext } from 'src/authContext';
 
 function UserSettings( { currentUser }) {

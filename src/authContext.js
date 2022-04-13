@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth'
-import { firebaseAuth } from 'firebase/clientApp';
+import { firebaseAuth } from 'src/firebaseApp';
 import React, { useEffect, useState } from 'react';
 import LandingPage from 'components/landingPage';
 
