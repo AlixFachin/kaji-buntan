@@ -1,25 +1,56 @@
 import styles from 'styles/input.module.css';
 
+import { useEffect, useState } from 'react';
+import { ToggleButton, ToggleButtonGroup, Slider } from '@mui/material';
+
 export default function InputItem(props) {
+
+    const { person, label, onTaskChange, initialValue } = props;
+
+    const [ isDoingTask, setDoingTask ] = useState(initialValue.participates);
+    const [ happyLevel, setHappyLevel ] = useState(initialValue.effort ? initialValue.effort : 0); // Neutral: 0, Unhappy: -1, Happy: +1
+    const [ taskTime, setTaskTime ] = useState(initialValue.duration ? initialValue.duration : 30);
+
+    useEffect(() => {
+        if (onTaskChange && onTaskChange instanceof Function) {
+            onTaskChange(person, label, {
+                participates: isDoingTask,
+                effort: happyLevel,
+                duration: taskTime,
+            })
+        }
+    }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person ] )
 
     return (<div className={styles.inputRow}>
         <div className={ styles.taskLabel }>{ props.label }</div>
-        <button className={ styles.actionButton }>する</button>
-        <button className={ styles.actionButton }>しない</button>
-        <div className={ styles.effortButtonBox }>
-            <button>😰</button>
-            <button>😐</button>
-            <button>😀</button>
-        </div>
-        <input type="range" list="tickmarks" />
-        <datalist id="tickmarks">
-            <option value="0" label="5min"></option>
-            <option value="1" label="10min"></option>
-            <option value="2" label="20min"></option>
-            <option value="3" label="30min"></option>
-            <option value="4" label="60min"></option>
-            <option value="5" label="90min"></option>
-        </datalist>
+          
+        <ToggleButtonGroup value={isDoingTask} sx={{ gridArea: 'action' }} color="secondary" exclusive
+            onChange={ (_, newValue) => {
+                        if (newValue !== null) setDoingTask(newValue);
+                    }}
+            aria-label="タスク担当かどうか">
+            <ToggleButton value={true} aria-label="する">する</ToggleButton>
+            <ToggleButton value={false} aria-label="しない">しない</ToggleButton>
+        </ToggleButtonGroup>
+
+        <ToggleButtonGroup value={happyLevel} sx={{ gridArea: 'effort' }} color="secondary" exclusive
+            onChange={ (_, newValue) => {
+                if (newValue !== null) setHappyLevel(newValue);
+            }}>
+            <ToggleButton value={-1}>😰</ToggleButton>
+            <ToggleButton value={0}>😐</ToggleButton>
+            <ToggleButton value={1}>😀</ToggleButton>
+        </ToggleButtonGroup>
+
+        <Slider
+            value={ taskTime }
+            sx={{ gridArea: 'duration' }}
+            step={10}
+            marks
+            min={10}
+            max={90}
+            onChange={ (_, newValue) => setTaskTime(newValue) }
+            />
 
     </div>);
 };

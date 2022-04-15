@@ -8,6 +8,14 @@ const theme = createTheme({
         secondary: {
             main: "rgb(107, 25, 64)",
         },
+    },
+    typography: {
+        h4: {
+            backgroundColor: "rgb(239, 182, 109)",
+            paddingLeft: '1em',
+            paddingRight: '1em',
+            borderRadius: '15px',
+        }
     }
 });
 

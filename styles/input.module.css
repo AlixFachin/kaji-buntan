@@ -41,27 +41,10 @@ h2.categoryHeader {
     padding-left: 1em;
 }
 
-.inputRow {
-
-    width: 90%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 1em;
-
-}
-
-.inputRow > * {
-    margin-left: 1em;
-    margin-right: 1em;
-}
-
-.taskLabel {
-    flex-grow: 1;
-}
-
+/* 
+    Button row at the window bottom 
+    入力ダイアログの下にボタン列（OK,キャンセル）
+*/
 .buttonRow {
     width: clamp(100px, 80%, 500px);
     display: flex;
@@ -73,3 +56,45 @@ h2.categoryHeader {
 
 
 }
+
+/* Input Element -> flexbox for several components */
+
+.inputRow {
+
+    max-width: 95%;
+
+    display: grid;
+    
+    grid-template-columns: 1fr 150px 1fr 2fr;
+    grid-template-areas: "label action effort duration";
+
+    align-items: center;
+
+    margin-bottom: 1.5em;
+
+}
+
+@media (max-width: 700px) and (min-width: 500px) {
+    .inputRow {
+        grid-template-columns: 1fr 150px 1fr;
+        grid-template-areas: "label action effort"
+        "duration duration duration";
+    }
+}
+
+@media (max-width: 499px) {
+    .inputRow {
+        grid-template-columns: 150px 1fr;
+        grid-template-areas: "label label" "action effort" "duration duration";
+    }
+}
+
+.inputRow > * {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
+.taskLabel {
+    grid-area: label;
+}
+

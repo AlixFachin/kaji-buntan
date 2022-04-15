@@ -37,7 +37,7 @@ main {
   height: 90vh;
   max-height: 90vh;
   
-  overflow: hidden;
+  overflow: scroll;
 
   display: flex;
   flex-direction: column;
