@@ -7,7 +7,8 @@
     "build": "next build",
     "staticbuild": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest --watch"
   },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
@@ -24,8 +25,11 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.7.2",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "12.1.5",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
+    "jest": "^27.5.1",
     "serve": "^13.0.2"
   }
 }
