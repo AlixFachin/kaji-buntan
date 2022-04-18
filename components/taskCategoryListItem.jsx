@@ -6,7 +6,6 @@ import { ExpandMore, ExpandLess } from "@mui/icons-material";
 export default function TaskCategoryListItem(props) {
     const computeCheckState = () => {
         const cnt = props.taskCategory.children.reduce((p, c) => p + c.checked, 0);
-        console.log(cnt);
         return (cnt === props.taskCategory.children.length?1:((cnt === 0)?-1:0))
     }
     const [open, setOpen] = useState(false);
