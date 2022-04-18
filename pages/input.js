@@ -49,11 +49,6 @@ export default function InputPage() {
 
     const { user } = useContext(AuthContext);
 
-    const getAllInputRows = (taskArray, personKey) => {
-        return taskArray.map((taskObject, index) => <InputItem label={taskObject.name} key={ `${taskObject.name}${index}` } person={personKey}
-            onTaskChange={setTaskRepartition} initialValue={ getTaskRepartition(personKey, taskObject.name) }/>)
-        }
-
     const getAllInputComponents = (taskArray, personKey) => {
 
         const returnArray = [];
