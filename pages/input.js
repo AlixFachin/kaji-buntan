@@ -2,6 +2,8 @@ import styles from '../styles/input.module.css';
 
 import Link from 'next/link';
 
+import React from 'react';
+import TaskCategoryList from "../components/taskCategoryList";
 import InputItem from '../components/inputItem';
 import  Tab from '@mui/material/Tab';
 import  Tabs from '@mui/material/Tabs';
@@ -13,6 +15,8 @@ import { addDoc, collection } from 'firebase/firestore';
 import { AuthContext } from 'src/authContext';
 
 import { DateTime } from 'luxon';
+
+import constants from "../src/constants";
 
 const allTasksObject = {
     Cooking: ['朝ご飯', '弁当', '昼ご飯', '夕ご飯', '買い物'],
@@ -42,6 +46,7 @@ function TabPanel(props) {
         </div>
     )
 }
+const allTasks = constants.allTasks
 
 export default function InputPage() {
 
@@ -128,17 +133,30 @@ export default function InputPage() {
         }
 
     }
+    
+    const [value, setValue] = React.useState("1");
 
+    const handleChange = (event, newValue) => {
+      setValue(newValue);
+    };
+  
+    const handleChangeTasks = (event) => {
+        allTasks[event.index].children[event.child.index].checked = event.child.checked;
+    }
     return (
         <div className={styles.inputPanel}>
-            <h1>Bulk Input Page</h1>
 
             <Tabs value={currentTab} onChange={ (_, newValue) => setCurrentTab(newValue) }>
-                <Tab label="私のタスク" />
-                <Tab label="パートナーのタスク" />
+                <Tab label="家事選択" />
+                <Tab label="私の評価" />
+                <Tab label="パートナーの評価"/>
+                <Tab label="結果"/>
             </Tabs>
-
-            <TabPanel value={ currentTab } index={0} sx={{ width: 1}} >
+            
+            <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
+                <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
+            </TabPanel>        
+            <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
                 <h2>私のタスクを入力</h2>
                 { Object.keys(allTasksObject).map( categoryName => (
                     <div className={ styles.categorySection } key={'m' + categoryName}> 
@@ -146,7 +164,7 @@ export default function InputPage() {
                         { getAllInputRows(allTasksObject[categoryName], 'me') }
                     </div>)) }
             </TabPanel>
-            <TabPanel value={ currentTab } index={1} sx={{ width: 1}}>
+            <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
                 <h2>パートナーのタスク入力</h2>
                 { Object.keys(allTasksObject).map( categoryName => (
                         <div className={ styles.categorySection } key={'p' + categoryName}> 
@@ -154,10 +172,13 @@ export default function InputPage() {
                             { getAllInputRows(allTasksObject[categoryName], 'partner') }
                         </div>)) }
             </TabPanel>
+            <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
+                <h3>アルゴリズムの結果</h3>
+            </TabPanel>
 
             <div className={styles.buttonRow}>
                 <Link href="/" passHref={true}><button>Cancel</button></Link>
-                <button onClick={ () => saveRepartitionToFireStore() }>Record</button>
+                <button>Next</button>
             </div>
         </div>
     );
