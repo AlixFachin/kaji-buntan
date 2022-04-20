@@ -3,11 +3,11 @@ import * as d3 from "d3";
 
 export default function ScatterPlot(props) {
   const ref = useRef();
-  const margin = 20;
+  const margin = 30;
   const graphWidth = props.width - 2 * margin;
   const graphHeight = props.height - 2 * margin;
   const xScale = d3.scalePoint([0, graphWidth]).domain([-1, 0, 1])
-  const yScale = d3.scaleLinear([0, graphHeight]).domain([0, 120])
+  const yScale = d3.scaleLinear([graphHeight, 0]).domain([0, 120])
   useEffect(() => {
     const svg = d3.select(ref.current);
     console.log(svg);
