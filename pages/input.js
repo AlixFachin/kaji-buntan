@@ -17,6 +17,7 @@ import { AuthContext } from 'src/authContext';
 import { DateTime } from 'luxon';
 
 import constants from "../src/constants";
+import ResultDashboard from 'components/resultDashboard';
 
 const allTasksObject = {
     Cooking: ['朝ご飯', '弁当', '昼ご飯', '夕ご飯', '買い物'],
@@ -174,6 +175,7 @@ export default function InputPage() {
             </TabPanel>
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
                 <h3>アルゴリズムの結果</h3>
+                <ResultDashboard value={ currentTaskRepartition }></ResultDashboard>
             </TabPanel>
 
             <div className={styles.buttonRow}>
