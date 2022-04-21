@@ -58,19 +58,12 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
         //console.log(isString(key));
         alist.push([AliceAllocation[i], bobUtility[AliceAllocation[i]]/aliceUtility[AliceAllocation[i]]]);
     }
-    //  ${}を使うと便利です。backquoteが必須です
-    let ll = [[4,4],[2,2],[5,5]];
-    ll.sort((a, b) => (b[1]-a[1]));
-    console.log("----------------",ll);
     alist.sort((a, b) => (b[1]-a[1]));
     let t = 0;
     for (let i=0; i < alist.length; i++){
-        //console.log("--------------",isEFone(aliceUtility,bobUtility,AliceAllocation,BobAllocation));
         if(isEFone(aliceUtility,bobUtility,AliceAllocation,BobAllocation)==true){
-            console.log("da------------------------------------------");
             break;
         }
-        // ここに (t < alist.length) のテストが必要でしょうか？
         if(t < alist.length){
             AliceAllocation = DeleteFromArray(AliceAllocation, alist[t][0]);
             BobAllocation.push(alist[t][0]);
@@ -220,7 +213,3 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
     return [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition];
 }
 
-function Home() {
-    const AliceUtility = [1,2,2,1,3,5,5];
-    const BobUtility = [1,4,2,3,10,3,4];
-}
