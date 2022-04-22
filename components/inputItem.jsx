@@ -11,6 +11,25 @@ export default function InputItem(props) {
     const [ happyLevel, setHappyLevel ] = useState(initialValue.effort ? initialValue.effort : 0); // Neutral: 0, Unhappy: -1, Happy: +1
     const [ taskTime, setTaskTime ] = useState(initialValue.duration ? initialValue.duration : 30);
 
+    const sliderMarks = [
+        {
+            value: 10,
+            label: '10',
+        },
+        {
+            value: 30,
+            label: '30',
+        },
+        {
+            value: 60,
+            label: '60',
+        },
+        {
+            value: 90,
+            label: '90',
+        }
+    ];
+
     useEffect(() => {
         if (onTaskChange && onTaskChange instanceof Function) {
             onTaskChange(person, label, {
@@ -44,9 +63,9 @@ export default function InputItem(props) {
 
         <Slider
             value={ taskTime }
-            sx={{ gridArea: 'duration' }}
+            sx={{ gridArea: 'duration', marginLeft: '1em' }}
             step={10}
-            marks
+            marks= { sliderMarks }
             min={10}
             max={90}
             onChange={ (_, newValue) => setTaskTime(newValue) }
