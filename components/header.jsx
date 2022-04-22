@@ -27,7 +27,7 @@ export default function ButtonAppBar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" centerTitle="true">
+        <AppBar position="static">
             <Toolbar>
                 <React.Fragment key='sidebar'>
                     <Button color="inherit" onClick={toggleDrawer(true)}>Menu</Button>

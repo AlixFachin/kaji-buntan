@@ -17,12 +17,9 @@ import { AuthContext } from 'src/authContext';
 import { DateTime } from 'luxon';
 
 import constants from "../src/constants";
+import ResultDashboard from 'components/resultDashboard';
 
-const allTasksObject = {
-    Cooking: ['朝ご飯', '弁当', '昼ご飯', '夕ご飯', '買い物'],
-    Cleaning: ['リビング', 'お風呂場', 'トイレ'],
-    Kids: ['音読', '宿題', 'お迎え', '病院連れ', 'お迎え'],
-};
+import makeAliceBobUtility from "../src/mainAlgorithm";
 
 // TabPanel -> https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
@@ -48,6 +45,26 @@ function TabPanel(props) {
 }
 const allTasks = constants.allTasks
 
+
+function makeBothAllocation(TaskRepartition){
+    let aliceAllocation = [];
+    let bobAllocation = [];
+    for (let category of allTasks){
+        for (let task of category.children){
+            if (task.checked){
+                const myTask1 = TaskRepartition['myTasks'][task.name];
+                const partnerTask1 = TaskRepartition['partnerTasks'][task.name];
+                if (myTask1 && myTask1.participates){
+                    aliceAllocation.push(task.name+" ");
+                }else{
+                    bobAllocation.push(task.name+" ");
+                }
+            }
+        }
+    }
+    return [aliceAllocation,bobAllocation];
+}
+
 export default function InputPage() {
 
     const [ currentTab, setCurrentTab ] = useState(0);
@@ -55,9 +72,26 @@ export default function InputPage() {
 
     const { user } = useContext(AuthContext);
 
-    const getAllInputRows = (taskArray, personKey) => {
-        return taskArray.map((taskName, index) => <InputItem  label={taskName} key={ `${taskName}${index}` } person={personKey}
-            onTaskChange={setTaskRepartition} initialValue={ getTaskRepartition(personKey, taskName) }/>)
+    const getAllInputComponents = (taskArray, personKey) => {
+
+        const returnArray = [];
+
+        for (let category of taskArray) {
+            let activeTasks = category.children.filter(task => task.checked).map((taskObject, index) => 
+                <InputItem label={taskObject.name} key={ `${taskObject.name}${index}` } person={personKey}
+                    onTaskChange={setTaskRepartition} initialValue={ getTaskRepartition(personKey, taskObject.name) }/>
+            );
+            if (activeTasks.length > 0) {
+                returnArray.push(
+                    <div className={ styles.categorySection } key={personKey[0] + category.name}>
+                        <h2 className={ styles.categoryHeader }>{ category.name }</h2>
+                        { activeTasks }
+                    </div>
+                );
+            }
+        }
+
+        return returnArray;
     }
 
     // Functions regarding the task repartition state -=-=-=-=-=-=-=-
@@ -66,20 +100,21 @@ export default function InputPage() {
         const myTasks = {};
         const partnerTasks = {};
 
-        for (let category in allTasksObject) {
-            for (let taskName of allTasksObject[category]) {
-                myTasks[taskName] = { 
+        for (let categoryObject of allTasks) {
+            for (let taskObject of categoryObject.children) {
+                myTasks[taskObject.name] = {
                     participates: false,
                     effort: 0,
                     duration : 10,
                 };
-                partnerTasks[taskName] = {
+                partnerTasks[taskObject.name] = {
                     participates: false,
                     effort: 0,
                     duration : 10,
-                };
+                }
             }
         }
+
         return { myTasks: myTasks, partnerTasks: partnerTasks};
     }
 
@@ -101,30 +136,30 @@ export default function InputPage() {
     async function saveRepartitionToFireStore() {
 
         console.log('Saving task repartition!')
-        for (let category of Object.keys(allTasksObject)) {
-            for (let task of allTasksObject[category]) {
-                const myTask = getTaskRepartition('me',task);
+        for (let category of allTasks) {
+            for (let task of category.children) {
+                const myTask = getTaskRepartition('me',task.name);
                 if (myTask && myTask.participates) {
                     console.log(`Saving task ${task} for duration ${myTask.duration}`)
                     await addDoc(collection(firebaseStore, "tasks"), {
                         userId: user.uid,
                         startDate: DateTime.now().toJSDate(),
                         endDate: DateTime.now().plus({ minutes: myTask.duration }).toJSDate(),
-                        category: category,
-                        taskName: task,
+                        category: category.name,
+                        taskName: task.name,
                         description: '',
                     })
                     console.log(`Success in Saving task ${task} for duration ${myTask.duration}`)                    
                 }
-                const partnerTask = getTaskRepartition('partner',task);
+                const partnerTask = getTaskRepartition('partner',task.name);
                 if (partnerTask && partnerTask.participates) {
                     console.log(`Saving partner task ${task} for duration ${partnerTask.duration}`)
                     await addDoc(collection(firebaseStore, "tasks"), {
                         userId: user.uid,
                         startDate: DateTime.now().toJSDate(),
                         endDate: DateTime.now().plus({ minutes: partnerTask.duration }).toJSDate(),
-                        category: category,
-                        taskName: task,
+                        category: category.name,
+                        taskName: task.name,
                         description: '',
                         partner: true,
                     })
@@ -134,15 +169,20 @@ export default function InputPage() {
 
     }
     
-    const [value, setValue] = React.useState("1");
-
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
-  
     const handleChangeTasks = (event) => {
         allTasks[event.index].children[event.child.index].checked = event.child.checked;
     }
+
+    ////////
+    console.log(allTasks, currentTaskRepartition);
+    let [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
+    //console.log(adjustedWinnerTaskRepartition);
+    //console.log(leastChangeAllocationTaskRepartition);
+    ////////
+    let [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition);
+    let [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition);
+    let [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition);
+    
     return (
         <div className={styles.inputPanel}>
 
@@ -155,25 +195,28 @@ export default function InputPage() {
             
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
                 <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
-            </TabPanel>        
+            </TabPanel>
             <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
                 <h2>私のタスクを入力</h2>
-                { Object.keys(allTasksObject).map( categoryName => (
-                    <div className={ styles.categorySection } key={'m' + categoryName}> 
-                        <h2 className={ styles.categoryHeader }>{ categoryName }</h2>
-                        { getAllInputRows(allTasksObject[categoryName], 'me') }
-                    </div>)) }
+                { getAllInputComponents(allTasks, 'me') }
             </TabPanel>
             <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
                 <h2>パートナーのタスク入力</h2>
-                { Object.keys(allTasksObject).map( categoryName => (
-                        <div className={ styles.categorySection } key={'p' + categoryName}> 
-                            <h2 className={ styles.categoryHeader }>{ categoryName }</h2>
-                            { getAllInputRows(allTasksObject[categoryName], 'partner') }
-                        </div>)) }
+                { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
-                <h3>アルゴリズムの結果</h3>
+                <h3>今の家事分担</h3>
+                私<ul>{<li>{currentAliceAllocation}</li>}</ul>
+                パートナー<ul>{<li>{currentBobAllocation}</li>}</ul>
+                <ResultDashboard value={ currentTaskRepartition }></ResultDashboard>
+                <h3>分担提案1</h3>
+                私<ul>{<li>{adjustedWinnerAliceAllocation}</li>}</ul>
+                パートナー<ul>{<li>{adjustedWinnerBobAllocation}</li>}</ul>
+                <ResultDashboard value={ adjustedWinnerTaskRepartition }></ResultDashboard>
+                <h3>分担提案2</h3>
+                私<ul>{<li>{leastChangeAliceAllocation}</li>}</ul>
+                パートナー<ul>{<li>{leastChangeBobAllocation}</li>}</ul>
+                <ResultDashboard value={ leastChangeAllocationTaskRepartition }></ResultDashboard>
             </TabPanel>
 
             <div className={styles.buttonRow}>

@@ -2,31 +2,39 @@ const allTasks = [
     {
         name: "料理",
         children: [
-            {name: '朝ご飯', checked: false},
-            {name: '弁当', checked: false},
-            {name: '昼ご飯', checked: true},
-            {name: '夕ご飯', checked: true},
-            {name: '買い物', checked: true}
+            {name: '朝ご飯作る', checked: true},
+            {name: '弁当買う', checked: true},
+            {name: '昼ご飯作る', checked: true},
+            {name: '夕ご飯作る', checked: true},
+            {name: '買い物行く', checked: true}
         ],
     }, {
         name: "掃除",
         children: [
-            {name: 'リビング', checked: false},
-            {name: 'お風呂場', checked: true},
-            {name: 'トイレ', checked: false}
+            {name: 'リビング掃除', checked: true},
+            {name: 'お風呂掃除', checked: true},
+            {name: 'トイレ掃除', checked: true},
+            {name: '台所掃除', checked: true},
+            {name: 'ゴミ出し', checked: true}
         ],
     }, {
-        name: "子育て",
+        name: "ベッド",
         children: [
-            {name: '音読', checked: false},
-            {name: '宿題', checked: false},
+            {name: 'お布団整える', checked: false},
+        ]
+    }, {
+        name: "子供",
+        children: [
+            {name: '読み聞かせ', checked: false},
+            {name: '宿題みる', checked: false},
             {name: 'お迎え', checked: false},
             {name: '病院連れ', checked: false},
         ]
     }, {
-        name: "その他",
+        name: "ペット",
         children: [
-            {name: '皿洗い', checked: true},
+            {name: '散歩', checked: false},
+            {name: '餌やり', checked: false},
         ]
     }
 ];
