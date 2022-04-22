@@ -5,6 +5,7 @@ import Image from 'next/image';
 import AuthDialog from 'components/auth/authDialog';
 import { useState } from 'react';
 import mainImage from 'public/undraw_positive_attitude_re_wu7d.svg';
+import Link from 'next/link';
 
 
 export default function LandingPage() {
@@ -23,8 +24,8 @@ export default function LandingPage() {
                 { isAuthDialogVisible ? <AuthDialog hideDialog={ hideAuthDialog }/> : '' }
                 <h1>家事分担アプリ</h1>
                 <Image src={mainImage} alt="couple discussing"  />
-                <p> Please log in or register with the link below! </p>
-                <button onClick={ showAuthDialog }>Login</button>
+                <p> 平等の家事分担の計算見ましょう！</p>
+                <Link href="/input" passHref={true} ><button>次へ</button></Link>
         </main>
     );
 }

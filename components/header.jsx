@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
         <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
             <Toolbar>
-                <React.Fragment key='sidebar'>
+                { /* <React.Fragment key='sidebar'>
                     <Button color="inherit" onClick={toggleDrawer(true)}>Menu</Button>
                     <SwipeableDrawer
                         open={state['sidebar']}
@@ -44,7 +44,7 @@ export default function ButtonAppBar() {
                             <UserSettings />
                         </Box>
                     </SwipeableDrawer>
-                </React.Fragment>
+                </React.Fragment> */ }
                 <Typography variant="h4" component="div" sx={{ flexGrow: 1 }} align="center">
                     家事分担
                 </Typography>

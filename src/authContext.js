@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { firebaseAuth } from 'src/firebaseApp';
 import React, { useEffect, useState } from 'react';
-import LandingPage from 'components/landingPage';
+// import LandingPage from 'components/landingPage';
 
 export const AuthContext = React.createContext();
 
@@ -22,12 +22,14 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     // Auth protection -> If no user are logged, we fall back to the landing page
+    // MVPの為に消しますが、ログインが必要になるときにコメントだけです
+    /*
     if (!user) {
         return  (
         <AuthContext.Provider value={{ user, firebaseAuth, logOut }}>
             <LandingPage />
         </AuthContext.Provider>);
-    }
+    } */
 
     return (
         <AuthContext.Provider value={{ user, firebaseAuth, logOut }}>

@@ -1,5 +1,4 @@
 import AppHeader from 'components/header.jsx'
-import AppFooter from 'components/footer.jsx'
 import { AuthProvider } from 'src/authContext';
 
 export default function Layout({ children }) {
@@ -12,7 +11,6 @@ export default function Layout({ children }) {
                         { children }
                     </main>
                 </div>
-            <AppFooter />
         </AuthProvider>
     )
 }
