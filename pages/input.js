@@ -20,6 +20,7 @@ import constants from "../src/constants";
 import ResultDashboard from 'components/resultDashboard';
 
 import makeAliceBobUtility from "../src/mainAlgorithm";
+import AllocationList from 'components/allocationList';
 
 // TabPanel -> https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
@@ -206,16 +207,16 @@ export default function InputPage() {
             </TabPanel>
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
                 <h3>今の家事分担</h3>
-                私<ul>{<li>{currentAliceAllocation}</li>}</ul>
-                パートナー<ul>{<li>{currentBobAllocation}</li>}</ul>
-                <ResultDashboard value={ currentTaskRepartition }></ResultDashboard>
+                <AllocationList head="私" data={currentAliceAllocation}></AllocationList>
+                <AllocationList head="パートナー" data={currentBobAllocation}></AllocationList>
+                <ResultDashboard value={currentTaskRepartition}></ResultDashboard>
                 <h3>分担提案1</h3>
-                私<ul>{<li>{adjustedWinnerAliceAllocation}</li>}</ul>
-                パートナー<ul>{<li>{adjustedWinnerBobAllocation}</li>}</ul>
+                <AllocationList head="私" data={adjustedWinnerAliceAllocation}></AllocationList>
+                <AllocationList head="パートナー" data={adjustedWinnerBobAllocation}></AllocationList>
                 <ResultDashboard value={ adjustedWinnerTaskRepartition }></ResultDashboard>
                 <h3>分担提案2</h3>
-                私<ul>{<li>{leastChangeAliceAllocation}</li>}</ul>
-                パートナー<ul>{<li>{leastChangeBobAllocation}</li>}</ul>
+                <AllocationList head="私" data={leastChangeAliceAllocation}></AllocationList>
+                <AllocationList head="パートナー" data={leastChangeBobAllocation}></AllocationList>
                 <ResultDashboard value={ leastChangeAllocationTaskRepartition }></ResultDashboard>
             </TabPanel>
 
