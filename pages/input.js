@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import React from 'react';
 import TaskCategoryList from "../components/taskCategoryList";
+import ResultTabComponent from '../components/resultTabComponent';
 import InputItem from '../components/inputItem';
 import  Tab from '@mui/material/Tab';
 import  Tabs from '@mui/material/Tabs';
@@ -17,7 +18,6 @@ import { AuthContext } from 'src/authContext';
 import { DateTime } from 'luxon';
 
 import constants from "../src/constants";
-import ResultDashboard from 'components/resultDashboard';
 
 import makeAliceBobUtility from "../src/mainAlgorithm";
 import AllocationList from 'components/allocationList';
@@ -186,7 +186,6 @@ export default function InputPage() {
     
     return (
         <div className={styles.inputPanel}>
-
             <Tabs value={currentTab} onChange={ (_, newValue) => setCurrentTab(newValue) }>
                 <Tab label="家事選択" />
                 <Tab label="私の評価" />
@@ -206,18 +205,18 @@ export default function InputPage() {
                 { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
-                <h3>今の家事分担</h3>
-                <AllocationList head="私" data={currentAliceAllocation}></AllocationList>
-                <AllocationList head="パートナー" data={currentBobAllocation}></AllocationList>
-                <ResultDashboard value={currentTaskRepartition}></ResultDashboard>
-                <h3>分担提案1</h3>
-                <AllocationList head="私" data={adjustedWinnerAliceAllocation}></AllocationList>
-                <AllocationList head="パートナー" data={adjustedWinnerBobAllocation}></AllocationList>
-                <ResultDashboard value={ adjustedWinnerTaskRepartition }></ResultDashboard>
-                <h3>分担提案2</h3>
-                <AllocationList head="私" data={leastChangeAliceAllocation}></AllocationList>
-                <AllocationList head="パートナー" data={leastChangeBobAllocation}></AllocationList>
-                <ResultDashboard value={ leastChangeAllocationTaskRepartition }></ResultDashboard>
+              <ResultTabComponent
+                currentTaskRepartition={ currentTaskRepartition }
+                currentAliceAllocation={ currentAliceAllocation }
+                currentBobAllocation={ currentBobAllocation }
+                adjustedWinnerAliceAllocation={ adjustedWinnerAliceAllocation }
+                adjustedWinnerBobAllocation={ adjustedWinnerBobAllocation }
+                adjustedWinnerTaskRepartition={ adjustedWinnerTaskRepartition }
+                leastChangeAliceAllocation={ leastChangeAliceAllocation }
+                leastChangeBobAllocation={ leastChangeBobAllocation }
+                leastChangeAllocationTaskRepartition={ leastChangeAllocationTaskRepartition }
+              >
+              </ResultTabComponent>
             </TabPanel>
 
             <div className={styles.buttonRow}>
