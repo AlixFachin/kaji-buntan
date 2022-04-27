@@ -35,25 +35,28 @@ const options = {
         y: {
             stacked: true
         },
-        xAxes: [{
-            scaleLabel: {
-                display: true,
-                labelString: '私'
-            }
-        }],
-        yAxes: [{
-            ticks: {
-                min: 0,
-                userCallback: function(tick) {
-                    return tick.toString() + '分';
-                }
-            },
-            scaleLabel: {
-                display: true,
-                labelString: '時間'
-            }
-        }]
-        
+        xAxes: [ // x軸設定
+        {
+        scaleLabel: { // 軸ラベル設定
+            display: true,
+            labelString: 'あ',
+          },
+        },
+        ],
+      yAxes: [ // y軸設定
+      {
+        scaleLabel: {
+          display: true,
+          labelString: '時間',
+        },
+        ticks: { // 軸目盛設定
+          beginAtZero: true,
+          callback: function (value, index, values) {
+            return '${value}(分)';
+          },
+        },
+      },
+    ],
     },
     title: {
         display: true,
@@ -117,7 +120,6 @@ export default function MakeBarGraph(props){
             }
         })
     });
-    console.log(datasets);
     const data = {labels: ["私","パートナー"]};
     data["datasets"] = datasets;
     

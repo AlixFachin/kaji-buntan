@@ -225,7 +225,7 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
         }
     }
 
-    console.log([aliceUtility, bobUtility, aliceAllocation, bobAllocation, taskList]);
+    //console.log([aliceUtility, bobUtility, aliceAllocation, bobAllocation, taskList]);
     //console.log(currentTaskRepartition);
     let adjustedWinnerTaskRepartition = adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition);
 
