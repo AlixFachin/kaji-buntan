@@ -30,9 +30,11 @@
     "@emotion/babel-plugin": "^11.7.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "12.1.5",
+    "chart.js": "^3.7.1",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "jest": "^27.5.1",
+    "react-chartjs-2": "^4.1.0",
     "serve": "^13.0.2"
   }
 }

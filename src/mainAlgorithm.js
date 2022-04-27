@@ -1,5 +1,6 @@
 
-
+import constants from "../src/constants";
+const allTasks = constants.allTasks
 
 function DeleteFromArray(Array1,item){
     const Array2 = []
@@ -30,26 +31,37 @@ function isEFone(AliceUtility,BobUtility,AliceAllocation,BobAllocation){
       AAU.push(AliceUtility[AliceAllocation[i]]);
       BAU.push(BobUtility[AliceAllocation[i]]);
     }
-    console.log("AAU",AAU);
-    console.log("SumArray(AAU)",SumArray(AAU));
-    console.log("BAU",BAU);
-    console.log("SumArray(BAU)",SumArray(BAU));
+    //console.log("AAU",AAU);
+    //console.log("SumArray(AAU)",SumArray(AAU));
+    //console.log("BAU",BAU);
+    //console.log("SumArray(BAU)",SumArray(BAU));
     for (let i=0; i < BobAllocation.length; i++){
       ABU.push(AliceUtility[BobAllocation[i]]);
       BBU.push(BobUtility[BobAllocation[i]]);
     }
-    console.log("ABU",ABU);
-    console.log("SumArray(ABU)",SumArray(ABU));
-    console.log("BBU",BBU);
-    console.log("SumArray(BBU)",SumArray(BBU));
-    console.log("SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU)",SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU));
-    console.log("SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU)",SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
+    //console.log("ABU",ABU);
+    //console.log("SumArray(ABU)",SumArray(ABU));
+    //console.log("BBU",BBU);
+    //console.log("SumArray(BBU)",SumArray(BBU));
+    //console.log("SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU)",SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU));
+    //console.log("SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU)",SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
     return (SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU) && SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
     
 }
-  
-  
-  
+
+function categoryShow(task){
+    let category;
+    for (let categoryObject of allTasks) {
+        for (let taskObject of categoryObject.children) {
+            if (taskObject.name == task){
+                category = categoryObject.name;
+            }
+        }
+    }
+    return category;
+}
+
+
 function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition){
     let AliceAllocation = Array.from(Array(aliceUtility.length), (v, k) => k);
     let BobAllocation = [];
@@ -76,17 +88,21 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
     const partnerTasks = {};
 
     for (let i of AliceAllocation) {
+        let category = categoryShow(taskList[i]);
         myTasks[taskList[i]] = {
             participates: true,
             effort: currentTaskRepartition.myTasks[taskList[i]].effort,
             duration : currentTaskRepartition.myTasks[taskList[i]].duration,
+            category : category,
         };
     }
     for (let i of BobAllocation) {
+        let category = categoryShow(taskList[i]);
         partnerTasks[taskList[i]] = {
             participates: true,
             effort: currentTaskRepartition.partnerTasks[taskList[i]].effort,
             duration : currentTaskRepartition.partnerTasks[taskList[i]].duration,
+            category : category,
         };
     }
     //console.log({ myTasks: myTasks, partnerTasks: partnerTasks})
@@ -112,7 +128,7 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
         let BAU=[];
         let ABU=[];
         let BBU=[];
-        console.log(aliceAllocation);
+        //console.log(aliceAllocation);
         for (let i=0; i < aliceAllocation.length; i++){
             let indexa = taskList.indexOf(aliceAllocation[i]);
             AAU.push(aliceUtility[indexa]);
@@ -161,17 +177,21 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
         const myTasks = {};
         const partnerTasks = {};
         for (let task of aliceAllocation) {
+            let category = categoryShow(task);
             myTasks[task] = {
                 participates: true,
                 effort: currentTaskRepartition.myTasks[task].effort,
                 duration : currentTaskRepartition.myTasks[task].duration,
+                category : category,
             };
         }
         for (let task of bobAllocation) {
+            let category = categoryShow(task);
             partnerTasks[task] = {
                 participates: true,
                 effort: currentTaskRepartition.partnerTasks[task].effort,
                 duration : currentTaskRepartition.partnerTasks[task].duration,
+                category : category,
             };
         }
         //console.log({ myTasks: myTasks, partnerTasks: partnerTasks})
@@ -198,7 +218,7 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
                 //console.log(myTask1);
                 if (myTask1 && myTask1.participates){
                     aliceAllocation.push(task.name);
-                }else{
+                }else if (partnerTask1 && partnerTask1.participates){
                     bobAllocation.push(task.name);
                 }
             }
@@ -210,6 +230,7 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
     let adjustedWinnerTaskRepartition = adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition);
 
     let leastChangeAllocationTaskRepartition = leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAllocation,taskList,currentTaskRepartition);
+    //console.log("kkkk",[adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition]);
     return [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition];
 }
 
