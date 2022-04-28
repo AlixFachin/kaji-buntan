@@ -22,7 +22,7 @@ export default function LandingPage() {
     return (
         <main>
                 { isAuthDialogVisible ? <AuthDialog hideDialog={ hideAuthDialog }/> : '' }
-                <h1>家事分担アプリ</h1>
+                <h1>家事分担コンセルジュ</h1>
                 <Image src={mainImage} alt="couple discussing"  />
                 <p> 平等の家事分担の計算見ましょう！</p>
                 <Link href="/input" passHref={true} ><button>次へ</button></Link>

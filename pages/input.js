@@ -57,7 +57,7 @@ function makeBothAllocation(TaskRepartition){
                 const partnerTask1 = TaskRepartition['partnerTasks'][task.name];
                 if (myTask1 && myTask1.participates){
                     aliceAllocation.push(task.name+" ");
-                }else{
+                }else if (partnerTask1 && partnerTask1.participates){
                     bobAllocation.push(task.name+" ");
                 }
             }
@@ -107,11 +107,13 @@ export default function InputPage() {
                     participates: false,
                     effort: 0,
                     duration : 10,
+                    category : categoryObject.name,
                 };
                 partnerTasks[taskObject.name] = {
                     participates: false,
                     effort: 0,
                     duration : 10,
+                    category : categoryObject.name,
                 }
             }
         }
@@ -174,12 +176,12 @@ export default function InputPage() {
         allTasks[event.index].children[event.child.index].checked = event.child.checked;
     }
 
-    ////////
+    
     console.log(allTasks, currentTaskRepartition);
     let [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
     //console.log(adjustedWinnerTaskRepartition);
     //console.log(leastChangeAllocationTaskRepartition);
-    ////////
+    
     let [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition);
     let [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition);
     let [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition);

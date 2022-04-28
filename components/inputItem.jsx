@@ -36,6 +36,7 @@ export default function InputItem(props) {
                 participates: isDoingTask,
                 effort: happyLevel,
                 duration: taskTime,
+                category: initialValue.category
             })
         }
     }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person ] )
