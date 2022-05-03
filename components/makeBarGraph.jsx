@@ -11,6 +11,8 @@ import { Chart as ChartJS } from 'chart.js/auto';
 
 const allTasks = constants.allTasks
 
+const backgroundColorList = constants.backgroundColorList
+const borderColorList = constants.borderColorList
 
 function categoryShow(task){
     let category;
@@ -66,20 +68,20 @@ const options = {
 
 
 
-const backgroundColorList = {
-    '料理' : 'rgba(255, 99, 132, 0.2)',
-    '掃除' : 'rgba(75, 192, 192, 0.2)',
-    'ベッド' : 'rgba(54, 162, 235, 0.2)',
-    '子供' : 'rgba(153, 102, 255, 0.2)',
-    'ペット' : 'rgba(201, 203, 207, 0.2)'
-}
-const borderColorList = {
-    '料理' :'rgb(255, 99, 132)',
-    '掃除' : 'rgb(75, 192, 192)',
-    'ベッド' :'rgb(54, 162, 235)',
-    '子供' : 'rgb(153, 102, 255)',
-    'ペット' :'rgb(201, 203, 207)'
-}
+// const backgroundColorList = {
+//     '料理' : 'rgba(255, 99, 132, 0.2)',
+//     '掃除' : 'rgba(75, 192, 192, 0.2)',
+//     'ベッド' : 'rgba(54, 162, 235, 0.2)',
+//     '子供' : 'rgba(153, 102, 255, 0.2)',
+//     'ペット' : 'rgba(201, 203, 207, 0.2)'
+// }
+// const borderColorList = {
+//     '料理' :'rgb(255, 99, 132)',
+//     '掃除' : 'rgb(75, 192, 192)',
+//     'ベッド' :'rgb(54, 162, 235)',
+//     '子供' : 'rgb(153, 102, 255)',
+//     'ペット' :'rgb(201, 203, 207)'
+// }
 
 export default function MakeBarGraph(props){
     const allTasks = constants.allTasks;
