@@ -9,17 +9,15 @@ const backgroundColorList = constants.backgroundColorList
 
 
 export default function AllocationChip(props) {
-  console.log(props);
   let categoryColor;
   for (let categoryObject of allTasks) {
       for (let taskObject of categoryObject.children) {
         if (taskObject.name == props.label){
-          console.log("dddddddddd");
           categoryColor = backgroundColorList[categoryObject.name];
         }
       }
   }
-  console.log(categoryColor);
+  //console.log(categoryColor);
   return (<ListItem><Chip 
   sx = {{
     backgroundColor: categoryColor,

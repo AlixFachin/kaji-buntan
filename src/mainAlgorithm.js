@@ -79,7 +79,7 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
         if(t < alist.length){
             AliceAllocation = DeleteFromArray(AliceAllocation, alist[t][0]);
             BobAllocation.push(alist[t][0]);
-            console.log(`AliceAllocation: ${AliceAllocation}, BobAllocation: ${BobAllocation}`);
+            //console.log(`AliceAllocation: ${AliceAllocation}, BobAllocation: ${BobAllocation}`);
             t++;
         }
     }
@@ -173,7 +173,7 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             bobAllocation = DeleteFromArray(bobAllocation, taskList[alist[0][0]]);
             aliceAllocation.push(taskList[alist[0][0]]);
         }
-        console.log(`AliceAllocation: ${aliceAllocation}, BobAllocation: ${bobAllocation}`);
+        //console.log(`AliceAllocation: ${aliceAllocation}, BobAllocation: ${bobAllocation}`);
         const myTasks = {};
         const partnerTasks = {};
         for (let task of aliceAllocation) {
