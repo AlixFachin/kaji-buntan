@@ -28,10 +28,10 @@ export default function ResultTableComponent(props) {
     });
   return (
     <Grid container spacing={2} sx={{alignItems: "center", borderBottom: 1, borderColor: "divider", width: "100%"}}>
-      <Grid item xs={6}>
+      <Grid item md={6} xs={12}>
         <SingleResultTable name="私" data={myTasks}></SingleResultTable>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item md={6} xs={12}>
         <SingleResultTable name="パートナー" data={partnerTasks}></SingleResultTable>
       </Grid>
     </Grid>
