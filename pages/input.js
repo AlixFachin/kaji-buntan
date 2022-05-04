@@ -177,7 +177,7 @@ export default function InputPage() {
     }
 
     
-    console.log(allTasks, currentTaskRepartition);
+    //console.log(allTasks, currentTaskRepartition);
     let [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
     //console.log(adjustedWinnerTaskRepartition);
     //console.log(leastChangeAllocationTaskRepartition);
