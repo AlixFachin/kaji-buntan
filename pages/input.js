@@ -8,7 +8,7 @@ import ResultTabComponent from '../components/resultTabComponent';
 import InputItem from '../components/inputItem';
 import  Tab from '@mui/material/Tab';
 import  Tabs from '@mui/material/Tabs';
-import { Box } from '@mui/material';
+import { Box, Button, Container, Grid } from '@mui/material';
 import { useContext, useState } from 'react';
 
 import { firebaseStore } from 'src/firebaseApp';
@@ -220,11 +220,16 @@ export default function InputPage() {
               >
               </ResultTabComponent>
             </TabPanel>
-
-            <div className={styles.buttonRow}>
-                <Link href="/" passHref={true}><button>Cancel</button></Link>
-                <button>Next</button>
-            </div>
+            <Grid container spacing={12} justifyContent="center">
+                <Grid item xs={2} justifyContent="center">
+                    <Link href="/" passHref={true}><Button variant="contained" color="secondary">Cancel</Button></Link>
+                </Grid>
+                <Grid item xs={2} justifyContent="center">
+                    <Button variant="contained" color="secondary" disabled={currentTab === 3} onClick={() => {
+                        setCurrentTab(currentTab + 1)
+                    }}>Next</Button>
+                </Grid>
+            </Grid>
         </div>
     );
 }
