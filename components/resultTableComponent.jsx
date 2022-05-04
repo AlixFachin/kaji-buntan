@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import SingleResultTable from "./singleResultTable";
 
 export default function ResultTableComponent(props) {
-  console.log(props);
   const myTasks = [];
    Object.keys(props.value.myTasks).map(k  => {
        if (props.value.myTasks[k].participates){
@@ -14,7 +13,6 @@ export default function ResultTableComponent(props) {
             })
         }
     });
-   console.log("aaa",myTasks);
    const partnerTasks = [];
    Object.keys(props.value.partnerTasks).map(k => {
        if (props.value.partnerTasks[k].participates){

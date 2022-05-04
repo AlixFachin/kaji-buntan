@@ -8,7 +8,7 @@ export default function ResultDashboard(props) {
     <Box>
       <ResultTableComponent value={props.value}></ResultTableComponent>
       <MakeBarGraph value={props.value}></MakeBarGraph>
-      <ScatterPlotComponent value={props.value}></ScatterPlotComponent>
+      {/* <ScatterPlotComponent value={props.value}></ScatterPlotComponent> */}
     </Box>
   )
 }

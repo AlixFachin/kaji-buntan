@@ -56,9 +56,9 @@ function makeBothAllocation(TaskRepartition){
                 const myTask1 = TaskRepartition['myTasks'][task.name];
                 const partnerTask1 = TaskRepartition['partnerTasks'][task.name];
                 if (myTask1 && myTask1.participates){
-                    aliceAllocation.push(task.name+" ");
+                    aliceAllocation.push(task.name);
                 }else if (partnerTask1 && partnerTask1.participates){
-                    bobAllocation.push(task.name+" ");
+                    bobAllocation.push(task.name);
                 }
             }
         }
