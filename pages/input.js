@@ -130,6 +130,13 @@ export default function InputPage() {
         const personKey = (person == 'me' ? 'myTasks' : 'partnerTasks');           
         
         currentTaskRepartition[personKey][taskName] = taskRepartitionItem;
+        // "私の評価”を変更すれば、パートナーの評価も自動的に設定します。
+        if (person == 'me') {
+            currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
+            // defaultでタスクは同じ長さにします。（後でパートナーは手動で更新できます）
+            currentTaskRepartition['partnerTasks'][taskName].duration = taskRepartitionItem.duration;
+        }
+
         setAllTaskRepartition(currentTaskRepartition);
 
     }
