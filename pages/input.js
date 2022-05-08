@@ -19,6 +19,8 @@ import { DateTime } from 'luxon';
 
 import constants from "../src/constants";
 
+import InputTour from 'components/inputTour';
+
 import makeAliceBobUtility from "../src/mainAlgorithm";
 import AllocationList from 'components/allocationList';
 
@@ -80,7 +82,7 @@ export default function InputPage() {
         for (let category of taskArray) {
             let activeTasks = category.children.filter(task => task.checked).map((taskObject, index) => 
                 <InputItem label={taskObject.name} key={ `${taskObject.name}${index}` } person={personKey}
-                    onTaskChange={setTaskRepartition} initialValue={ getTaskRepartition(personKey, taskObject.name) }/>
+                    onTaskChange={setTaskRepartition} initialValue={ getTaskRepartition(personKey, taskObject.name)} demo={index === 0}/>
             );
             if (activeTasks.length > 0) {
                 returnArray.push(
@@ -198,11 +200,12 @@ export default function InputPage() {
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
                 <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
             </TabPanel>
-            <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
+            <TabPanel id="myInputPanel" value={ currentTab } index={1} sx={{ width: 1}} >
                 <h2>私のタスクを入力</h2>
+                <InputTour />
                 { getAllInputComponents(allTasks, 'me') }
             </TabPanel>
-            <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
+            <TabPanel id="PartnerInputPanel" value={ currentTab } index={2} sx={{ width: 1}}>
                 <h2>パートナーのタスク入力</h2>
                 { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
