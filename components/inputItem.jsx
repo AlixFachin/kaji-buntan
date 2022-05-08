@@ -5,7 +5,7 @@ import { ToggleButton, ToggleButtonGroup, Slider } from '@mui/material';
 
 export default function InputItem(props) {
 
-    const { person, label, onTaskChange, initialValue } = props;
+    const { person, label, onTaskChange, initialValue , demo } = props;
 
     const [ isDoingTask, setDoingTask ] = useState(initialValue.participates);
     const [ happyLevel, setHappyLevel ] = useState(initialValue.effort ? initialValue.effort : 0); // Neutral: 0, Unhappy: -1, Happy: +1
@@ -39,12 +39,12 @@ export default function InputItem(props) {
                 category: initialValue.category
             })
         }
-    }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person ] )
+    }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person, initialValue.category] )
 
     return (<div className={styles.inputRow}>
         <div className={ styles.taskLabel }>{ props.label }</div>
           
-        <ToggleButtonGroup value={isDoingTask} sx={{ gridArea: 'action' }} color="secondary" exclusive
+        <ToggleButtonGroup id={demo ? 'demo_participates' : ''} value={isDoingTask} sx={{ gridArea: 'action' }} color="secondary" exclusive
             onChange={ (_, newValue) => {
                         if (newValue !== null) setDoingTask(newValue);
                     }}
@@ -53,7 +53,7 @@ export default function InputItem(props) {
             <ToggleButton value={false} aria-label="しない">しない</ToggleButton>
         </ToggleButtonGroup>
 
-        <ToggleButtonGroup value={happyLevel} sx={{ gridArea: 'effort' }} color="secondary" exclusive
+        <ToggleButtonGroup id={demo ? 'demo_effort' : ''} value={happyLevel} sx={{ gridArea: 'effort' }} color="secondary" exclusive
             onChange={ (_, newValue) => {
                 if (newValue !== null) setHappyLevel(newValue);
             }}>
@@ -63,6 +63,7 @@ export default function InputItem(props) {
         </ToggleButtonGroup>
 
         <Slider
+            id={demo ? 'demo_slider' : ''}
             value={ taskTime }
             sx={{ gridArea: 'duration', marginLeft: '1em' }}
             step={10}
