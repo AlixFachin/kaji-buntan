@@ -17,19 +17,19 @@ export default function ResultTabComponent(props) {
         <Tab label="全家事で理想的な分担" value="3" />
       </TabList>
       <TabPanel value="1" sx={{ width: 1}}>
+        <ResultDashboard value={ props.currentTaskRepartition }></ResultDashboard>
         <AllocationList head="私" data={props.currentAliceAllocation}></AllocationList>
         <AllocationList head="パートナー" data={props.currentBobAllocation}></AllocationList>
-        <ResultDashboard value={ props.currentTaskRepartition }></ResultDashboard>
       </TabPanel>
       <TabPanel value="2" sx={{ width: 1}}>
-      <AllocationList head="私" data={props.leastChangeAliceAllocation}></AllocationList>
-        <AllocationList head="パートナー" data={props.leastChangeBobAllocation}></AllocationList>
         <ResultDashboard value={ props.leastChangeAllocationTaskRepartition }></ResultDashboard>
+        <AllocationList head="私" data={props.leastChangeAliceAllocation}></AllocationList>
+        <AllocationList head="パートナー" data={props.leastChangeBobAllocation}></AllocationList>
       </TabPanel>
       <TabPanel value="3" sx={{ width: 1}}>
-      <AllocationList head="私" data={props.adjustedWinnerAliceAllocation}></AllocationList>
-        <AllocationList head="パートナー" data={props.adjustedWinnerBobAllocation}></AllocationList>
         <ResultDashboard value={ props.adjustedWinnerTaskRepartition }></ResultDashboard>
+        <AllocationList head="私" data={props.adjustedWinnerAliceAllocation}></AllocationList>
+        <AllocationList head="パートナー" data={props.adjustedWinnerBobAllocation}></AllocationList>
       </TabPanel>
     </TabContext>
   )

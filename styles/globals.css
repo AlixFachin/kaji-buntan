@@ -6,9 +6,9 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   /* Color constants  */
-  --main-color: rgb(239, 182, 109);
+  --main-color: #A5559C;
   --second-color: rgb(107, 25, 64);
-  --third-color: rgb(212, 94, 70);
+  --third-color: #A5559C;
   --error-color: rgb(184, 26, 53);
 }
 

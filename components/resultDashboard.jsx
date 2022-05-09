@@ -6,9 +6,9 @@ import { Box } from "@mui/material";
 export default function ResultDashboard(props) {
   return (
     <Box>
-      <ResultTableComponent value={props.value}></ResultTableComponent>
+      {/* <ResultTableComponent value={props.value}></ResultTableComponent> */}
       <MakeBarGraph value={props.value}></MakeBarGraph>
-      <ScatterPlotComponent value={props.value}></ScatterPlotComponent>
+      {/* <ScatterPlotComponent value={props.value}></ScatterPlotComponent> */}
     </Box>
   )
 }

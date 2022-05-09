@@ -3,15 +3,15 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "rgb(239, 182, 109)",
+            main: "#A5559C",
         },
         secondary: {
-            main: "rgb(107, 25, 64)",
+            main: "#A5559C",
         },
     },
     typography: {
         h4: {
-            backgroundColor: "rgb(239, 182, 109)",
+            backgroundColor: "#A5559C",
             paddingLeft: '1em',
             paddingRight: '1em',
             borderRadius: '15px',
