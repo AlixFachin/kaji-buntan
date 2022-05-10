@@ -6,6 +6,8 @@ import AuthDialog from 'components/auth/authDialog';
 import { useState } from 'react';
 //import mainImage from 'public/undraw_positive_attitude_re_wu7d.svg';
 import Link from 'next/link';
+import { Button, Typography } from '@mui/material';
+import IntroImageStepper from './introImageStepper';
 
 
 export default function LandingPage() {
@@ -21,11 +23,9 @@ export default function LandingPage() {
     
     return (
         <main>
-                { isAuthDialogVisible ? <AuthDialog hideDialog={ hideAuthDialog }/> : '' }
-                <h1>家事分担コンセルジュ</h1>
-                {/* <Image src={mainImage} alt="couple discussing"  /> */}
-                <p> 平等の家事分担の計算見ましょう！</p>
-                <Link href="/input" passHref={true} ><button>次へ</button></Link>
+            { isAuthDialogVisible ? <AuthDialog hideDialog={ hideAuthDialog }/> : '' }
+            <IntroImageStepper></IntroImageStepper>
+            <Link href="/input" passHref={true} ><Button variant="contained" color="secondary" sx={{m: 2, px: 6, py:2}}><Typography variant="h3">使ってみる</Typography></Button></Link>
         </main>
     );
 }
