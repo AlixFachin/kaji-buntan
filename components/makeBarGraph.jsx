@@ -68,6 +68,7 @@ const options = {
 
 
 
+
 // const backgroundColorList = {
 //     '料理' : 'rgba(255, 99, 132, 0.2)',
 //     '掃除' : 'rgba(75, 192, 192, 0.2)',
@@ -131,7 +132,8 @@ export default function MakeBarGraph(props){
     return  (
       <Bar
        data={data} 
-       options={options}
+       options={{responsive: true,
+        maintainAspectRatio: true}}
        width={50}
        height={50}
        />
