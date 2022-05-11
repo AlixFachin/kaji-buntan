@@ -3,12 +3,12 @@ import AllocationChip from "./allocationChip";
 
 export default function AllocationList(props) {
   return <Grid container sx={{alignItems: "center", borderBottom: 1, borderColor: "divider"}}>
-    <Grid item xs={2}>
+    {/* <Grid item xs={2}>
       <Typography>
         {props.head}
       </Typography>
     </Grid>
-    <Grid item xs={10}>
+    <Grid item xs={10}> */}
       <Box sx={{
         display: "flex",
         flexWrap: "wrap",
@@ -21,5 +21,5 @@ export default function AllocationList(props) {
         }
       </Box>
     </Grid>
-  </Grid>
+  // </Grid>
 }
