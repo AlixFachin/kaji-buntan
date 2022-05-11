@@ -138,7 +138,7 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
             }
         }
     }
-    console.log("Output of the AW algorithm",{ myTasks: myTasks, partnerTasks: partnerTasks})
+    //console.log("Output of the AW algorithm",{ myTasks: myTasks, partnerTasks: partnerTasks})
     return { myTasks: myTasks, partnerTasks: partnerTasks};
 }
 

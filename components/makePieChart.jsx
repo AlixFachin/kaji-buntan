@@ -36,8 +36,8 @@ function makeMyPieData(props){
                     if (props.value.myTasks[t.name].participates){
                         labels.push(t.name);
                         data.push(calculateBurden(props.value.myTasks[t.name].effort, props.value.myTasks[t.name].duration));
-                        backgroundColor.push(myBackColor);
-                        hoverBackgroundColor.push(myBackColor);
+                        backgroundColor.push(myBackColorBorder);
+                        hoverBackgroundColor.push(myBackColorBorder);
                     }
                 }
             }
@@ -76,8 +76,8 @@ function makePartnerPieData(props){
                     if (props.value.partnerTasks[t.name].participates){
                         labels.push(t.name);
                         data.push(calculateBurden(props.value.partnerTasks[t.name].effort, props.value.partnerTasks[t.name].duration));
-                        backgroundColor.push(partnerBackColor);
-                        hoverBackgroundColor.push(partnerBackColor);
+                        backgroundColor.push(partnerBackColorBorder);
+                        hoverBackgroundColor.push(partnerBackColorBorder);
                     }
                 }
             }

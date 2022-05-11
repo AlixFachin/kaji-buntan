@@ -8,6 +8,8 @@ const allTasks = constants.allTasks
 const backgroundColorList = constants.backgroundColorList
 const myBackColor = constants.myBackColor
 const partnerBackColor = constants.partnerBackColor
+const myBackColorBorder = constants.myBackColorBorder
+const partnerBackColorBorder = constants.partnerBackColorBorder
 
 export default function AllocationChip(props) {
   let categoryColor;

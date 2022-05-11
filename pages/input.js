@@ -133,8 +133,6 @@ export default function InputPage() {
         // "私の評価”を変更すれば、パートナーの評価も自動的に設定します。
         if (person == 'me') {
             currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
-            // defaultでタスクは同じ長さにします。（後でパートナーは手動で更新できます）
-            currentTaskRepartition['partnerTasks'][taskName].duration = taskRepartitionItem.duration;
         }
 
         setAllTaskRepartition(currentTaskRepartition);
@@ -227,7 +225,7 @@ export default function InputPage() {
               >
               </ResultTabComponent>
             </TabPanel>
-            <Grid container spacing={12} justifyContent="center">
+            {/* <Grid container spacing={12} justifyContent="center">
                 <Grid item xs={2} justifyContent="center">
                     <Link href="/" passHref={true}><Button variant="contained" color="secondary">Cancel</Button></Link>
                 </Grid>
@@ -236,7 +234,7 @@ export default function InputPage() {
                         setCurrentTab(currentTab + 1)
                     }}>Next</Button>
                 </Grid>
-            </Grid>
+            </Grid> */}
         </div>
     );
 }

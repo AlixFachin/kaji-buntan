@@ -36,7 +36,7 @@ const allTasks = [
         name: "お風呂の準備",
         children: [
             {name: 'お風呂を入れる', checked: false},
-            {name: 'シャンプー・コンディショナー・石鹸の買い出しと補充', checked: false},
+            {name: 'シャンプーの買い出し、補充', checked: false},
             {name: '使ったバスタオルを回収・干す・交換', checked: false},
         ],
     }, {
@@ -83,7 +83,7 @@ const allTasks = [
         name: "掃除 (家全体)",
         children: [
             {name: '家中で掃除機かける', checked: false},
-            {name: '服・おもちゃ・文具、出しっ放しのものをしまう', checked: false},
+            {name: '文具、出しっ放しをしまう', checked: false},
             {name: '子供のゴミを拾って捨てる', checked: false},
             {name: '玄関の掃除', checked: false},
             {name: '靴を整頓して並べる', checked: false},
@@ -96,17 +96,16 @@ const allTasks = [
     },{
         name: "ゴミ捨て",
         children: [
-            {name: 'ゴミ集める・分ける(プラ・可燃・不燃・缶・びん・ペット・紙など)', checked: false},
-            {name: 'ペットボトルのふたとフィルム、瓶のフィルムはがす', checked: false},
+            {name: 'ゴミ集める・分ける', checked: false},
+            {name: 'ペットボトルのフィルムはがす', checked: false},
             {name: 'ゴミ出し', checked: false},
-            {name: 'ゴミ箱を洗う', checked: false},
             {name: 'ゴミ箱にゴミ袋装着', checked: false},
             {name: 'ダンボールをつぶして捨てる', checked: false},
         ],
     },{
         name: "家庭内の雑用",
         children: [
-            {name: '家族のスケジュールをカレンダーに書き込んで把握・管理', checked: false},
+            {name: '家族カレンダー管理', checked: false},
             {name: '郵便物を取りに行く', checked: false},
             {name: '郵便物を分けて捨てる', checked: false},
             {name: '郵便物の支払いもの仕分け・管理', checked: false},
