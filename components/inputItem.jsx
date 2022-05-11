@@ -57,9 +57,9 @@ export default function InputItem(props) {
             onChange={ (_, newValue) => {
                 if (newValue !== null) setHappyLevel(newValue);
             }}>
-            <ToggleButton value={-1}>😰</ToggleButton>
-            <ToggleButton value={0}>😐</ToggleButton>
-            <ToggleButton value={1}>😀</ToggleButton>
+            <ToggleButton value={-1}>👎</ToggleButton>
+            <ToggleButton value={0}>👌</ToggleButton>
+            <ToggleButton value={1}>👍</ToggleButton>
         </ToggleButtonGroup>
 
         <Slider

@@ -85,7 +85,7 @@ export default function InputPage() {
             if (activeTasks.length > 0) {
                 returnArray.push(
                     <div className={ styles.categorySection } key={personKey[0] + category.name}>
-                        <h2 className={ styles.categoryHeader }>{ category.name }</h2>
+                        <h2 className={ styles.categoryHeader } style={{ color: 'white' }}>{ category.name }</h2>
                         { activeTasks }
                     </div>
                 );
