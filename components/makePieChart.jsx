@@ -106,10 +106,6 @@ function makePartnerPieData(props){
 
 export default function MakePieChart(props){
     const datasets = [];
-    console.log(allTasks);
-    console.log(props);
-    console.log(makeMyPieData(props));
-    console.log(makePartnerPieData(props));
     if (props.head == '私'){
         return <Pie
            data={ makeMyPieData(props)}

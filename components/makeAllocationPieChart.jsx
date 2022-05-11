@@ -106,10 +106,6 @@ function makePartnerPieData(props){
 
 export default function MakeAllocationPieChart(props){
     const datasets = [];
-    console.log(allTasks);
-    console.log(props);
-    console.log(makeMyPieData(props));
-    console.log(makePartnerPieData(props));
     return <Grid container sx={{alignItems: "center", borderBottom: 1, borderColor: "divider"}}>
     <Grid item xs={5}>
     <Pie

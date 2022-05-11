@@ -6,7 +6,6 @@ import { Box, Grid } from "@mui/material";
 import AllocationList from "./allocationList";
 
 export default function ResultDashboard(props) {
-  console.log("daddada-----",props);
   return (
     <Box>
       <Grid container sx={{alignItems: "center", borderBottom: 1, borderColor: "divider"}}>
