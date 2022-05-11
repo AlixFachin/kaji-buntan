@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Checkbox, Collapse, List, ListItemIcon, ListItemButton, ListItemText } from "@mui/material"
+import { Checkbox, Collapse, List, ListItemIcon, ListItemButton, ListItemText, ListItemAvatar, Avatar } from "@mui/material"
 import TaskListItem from "./taskListItem"
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import Image from 'next/image';
 
 export default function TaskCategoryListItem(props) {
     const computeCheckState = () => {
@@ -28,11 +29,15 @@ export default function TaskCategoryListItem(props) {
         props.onChange({index: props.index, child: event});
         setChecked(computeCheckState());
     }
+    let cateName = '/avatar/'+props.taskCategory.name+'.png';
     return (<>
         <ListItemButton onClick={handleClick}>
             <ListItemIcon>
                 <Checkbox onClick={handleCheck} checked={checked === 1} indeterminate={checked === 0}></Checkbox>
             </ListItemIcon>
+            <ListItemAvatar>
+                <Avatar  src={cateName} />
+            </ListItemAvatar>
             <ListItemText primary={props.taskCategory.name} />
             {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>

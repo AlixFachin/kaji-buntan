@@ -17,7 +17,7 @@ export default function AllocationList(props) {
         p: 0
       }} component="ul">
         {
-          props.data.map((d, i) => <AllocationChip key={i} label={d} myORpartner = {props.head} ></AllocationChip>)
+          props.data.map((d, i) => <AllocationChip key={i} label={d} myORpartner = {props.head} changedList={props.changedList} current={props.current}></AllocationChip>)
         }
       </Box>
     </Grid>
