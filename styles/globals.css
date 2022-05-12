@@ -44,6 +44,12 @@ main {
 
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button {
   background-color: var(--second-color);
   color: white;

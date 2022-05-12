@@ -212,12 +212,10 @@ export default function InputPage() {
             </TabPanel>
             <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
                 <GuideTalk tabnumber={1}></GuideTalk>
-                <h2>私のタスクを入力</h2>
                 { getAllInputComponents(allTasks, 'me') }
             </TabPanel>
             <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
                 <GuideTalk tabnumber={2}></GuideTalk>
-                <h2>パートナーのタスク入力</h2>
                 { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>

@@ -54,8 +54,8 @@ export default function InputItem(props) {
                         if (newValue !== null) setDoingTask(newValue);
                     }}
             aria-label="タスク担当かどうか">
-            <ToggleButton value={true} aria-label="する">する</ToggleButton>
-            <ToggleButton value={false} aria-label="しない">しない</ToggleButton>
+            <ToggleButton value={true} aria-label="する"><font size="1.5">する</font></ToggleButton>
+            <ToggleButton value={false} aria-label="しない"><font size="1.5">しない</font></ToggleButton>
         </ToggleButtonGroup>
 
         <ToggleButtonGroup value={happyLevel} sx={{ gridArea: 'effort' }} color="secondary" exclusive
