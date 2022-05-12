@@ -53,7 +53,7 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "結果です 既におおよそ公平ですね" }</font></b>
+                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
@@ -61,7 +61,7 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "結果です． 変更を提案しますね" }</font></b>
+                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
@@ -71,13 +71,13 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "既におおよそ公平でした！" }</font></b>
+                        <b><font size="5.5">{ "少し変更しました．既におおよそ公平でした！" }</font></b>
                         <h1></h1>
                     </Box>
                  )
             }else{
                 let category = categoryShow(props.changedListLeast[0]);
-                let saying = "少し変更なら「"+category+"」の見直しはどうでしょう";
+                let saying = "少し変更しました．「"+category+"」の見直しはどうでしょう";
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
@@ -91,7 +91,7 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "既におおよそ公平でした！" }</font></b>
+                        <b><font size="5.5">{ "理想的な分担です．既におおよそ公平でした" }</font></b>
                         <h1></h1>
                     </Box>
                  )
@@ -99,7 +99,7 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "こちらも公平です" }</font></b>
+                        <b><font size="5.5">{ "理想的な分担です．こちらも公平ですね" }</font></b>
                         <h1></h1>
                     </Box>
                  )
@@ -107,7 +107,7 @@ export default function GuideTalk(props) {
                 return (
                     <Box sx={{ flexGrow: 1 }}>
                         <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な担当はこう！" }</font></b>
+                        <b><font size="5.5">{ "理想的な分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
