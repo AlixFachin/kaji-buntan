@@ -39,9 +39,9 @@ export default function InputItem(props) {
                 category: initialValue.category
             })
         }
-    }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person ] )
+    }, [isDoingTask, happyLevel, taskTime, onTaskChange, label, person, initialValue.category ] )
 
-    return (<div className={styles.inputRow}>
+    return (<div className={ styles.inputRow }>
         <div className={ styles.taskLabel }>{ props.label }</div>
           
         <ToggleButtonGroup value={isDoingTask} sx={{ gridArea: 'action' }} color="secondary" exclusive

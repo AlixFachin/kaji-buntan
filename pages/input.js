@@ -108,12 +108,14 @@ export default function InputPage() {
                     effort: 0,
                     duration : 10,
                     category : categoryObject.name,
+                    userModified: false,
                 };
                 partnerTasks[taskObject.name] = {
                     participates: false,
                     effort: 0,
                     duration : 10,
                     category : categoryObject.name,
+                    userModified: false,
                 }
             }
         }
@@ -130,8 +132,10 @@ export default function InputPage() {
         const personKey = (person == 'me' ? 'myTasks' : 'partnerTasks');           
         
         currentTaskRepartition[personKey][taskName] = taskRepartitionItem;
-        // "私の評価”を変更すれば、パートナーの評価も自動的に設定します。
-        if (person == 'me') {
+        currentTaskRepartition[personKey][taskName].userModified = true;
+
+        // "私の評価”を変更すれば、パートナーの評価も自動的に設定します（ユーザーから変更がなかった場合のみ）
+        if (person == 'me' && !currentTaskRepartition['partnerTasks'][taskName].userModified) {
             currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
             // defaultでタスクは同じ長さにします。（後でパートナーは手動で更新できます）
             currentTaskRepartition['partnerTasks'][taskName].duration = taskRepartitionItem.duration;
@@ -195,11 +199,11 @@ export default function InputPage() {
     
     return (
         <div className={styles.inputPanel}>
-            <Tabs value={currentTab} onChange={ (_, newValue) => setCurrentTab(newValue) }>
-                <Tab label="家事選択" />
-                <Tab label="私の評価" />
-                <Tab label="パートナーの評価"/>
-                <Tab label="結果"/>
+            <Tabs value={currentTab} sx={{ position: 'sticky', top: '10px', backgroundColor: 'white', zIndex: 50000, borderRadius: '5px' }} onChange={ (_, newValue) => setCurrentTab(newValue) }>
+                <Tab label="家事選択" sx={{ backgroundColor: 'white'}} />
+                <Tab label="私の評価" sx={{ backgroundColor: 'white'}}/>
+                <Tab label="パートナーの評価" sx={{ backgroundColor: 'white'}}/>
+                <Tab label="結果" sx={{ backgroundColor: 'white'}}/>
             </Tabs>
             
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
