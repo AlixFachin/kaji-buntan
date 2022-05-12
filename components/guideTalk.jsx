@@ -19,99 +19,70 @@ function categoryShow(task){
     return category;
 }
 
+
+
 export default function GuideTalk(props) {
-    if (props.tabnumber==0){
-        return (
-            <Box sx={{ flexGrow: 1 }}>
-                <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "まずは家事を選択！" }</font></b>
-                <h1></h1>
-            </Box>
-         )
-    }else if (props.tabnumber==1){
-        return (
-            <Box sx={{ flexGrow: 1 }}>
-                <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "あなたの担当家事、好き嫌い、かかる時間を教えてね" }</font></b>
-                <h1></h1>
-            </Box>
-         )
-    }else if (props.tabnumber==2){
-        return (
-            <Box sx={{ flexGrow: 1 }}>
-                <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "パートナーの好き嫌い、かかる時間を教えてね" }</font></b>
-                <h1></h1>
-            </Box>
-         )
-    }else {
-        if (props.tabtabnumber==0){
-            if (props.changeOrUnchageLeast=='unchanged'){
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
+
+    function getSaying() {
+        if (props.tabnumber == 0){
+            return "まずは家事を選択！";
+        }else if (props.tabnumber == 1){
+            return "あなたの担当家事、好き嫌い、かかる時間を教えてね";
+        }else if (props.tabnumber == 2){
+            return "パートナーの好き嫌い、かかる時間を教えてね";
+        }else {
+            if (props.tabtabnumber == 0){
+                if (props.changeOrUnchageLeast=='unchanged'){
+                    return "今の家事分担です";
+                }else{
+                    return "今の家事分担です";
+                }
+            }else if (props.tabtabnumber==1){
+                if (props.changeOrUnchageLeast == 'unchanged'){
+                    return "少し変更しました．既におおよそ公平でした！";
+                }else{
+                    let category = categoryShow(props.changedListLeast[0]);
+                    return `少し変更しました．「${ category }」の見直しはどうでしょう`;
+                }
             }else{
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
+                if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
+                    return "理想的な分担です．既におおよそ公平でした";
+                }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
+                    return "理想的な分担です．こちらも公平ですね";
+                }else{
+                    return "理想的な分担です";
+                }
             }
-        }else if (props.tabtabnumber==1){
-            if (props.changeOrUnchageLeast=='unchanged'){
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "少し変更しました．既におおよそ公平でした！" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
-            }else{
-                let category = categoryShow(props.changedListLeast[0]);
-                let saying = "少し変更しました．「"+category+"」の見直しはどうでしょう";
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ saying }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
-            }
-        }else{
-            if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='unchanged'){
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です．既におおよそ公平でした" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
-            }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です．こちらも公平ですね" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
-            }else{
-                return (
-                    <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です" }</font></b>
-                        <h1></h1>
-                    </Box>
-                 )
-            }
-        }
+        }        
     }
+    
+    return (
+        <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'start', marginBottom: '1.5em'}}>
+            <Image alt="introduction" src={sensei} width={102} height={72}></Image>
+            <Box sx={{
+                backgroundColor: 'lightgrey',
+                borderRadius: '5px',
+                marginLeft: '1.5em',
+                paddingY: '0.5em',
+                paddingX: '1em',
+                position: 'relative',
+            }}>
+                <font size="5.5">{ getSaying() }</font>
+                <Box sx={{
+                    boxSizing: 'content-box',
+                    backgroundColor: 'transparent',
+                    borderTop: '10px solid transparent',
+                    borderBottom: '10px solid transparent',
+                    borderRight: '10px solid lightgrey',
+                    position: 'absolute',
+                    left: '-10px',
+                    top: '15px',
+                    height: '0px',
+                    width: '0px'
+                }}></Box>
+            </Box>
+            <h1></h1>
+        </Box>
+     );
+
 }

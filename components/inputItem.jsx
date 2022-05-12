@@ -69,9 +69,9 @@ export default function InputItem(props) {
             {/* <ToggleButton value={-1}>👎</ToggleButton>
             <ToggleButton value={0}>👌</ToggleButton>
             <ToggleButton value={-1}>👍</ToggleButton> */}
-            <ToggleButton value={-1}><Image alt="introduction" src={unhappy} width={30} height={30}></Image></ToggleButton>
-            <ToggleButton value={0}><Image alt="introduction" src={neutral} width={30} height={30}></Image></ToggleButton>
-            <ToggleButton value={1}><Image alt="introduction" src={happy} width={30} height={30}></Image></ToggleButton>
+            <ToggleButton value={-1} sx={{ padding: '5px' }} ><Image alt="introduction" src={unhappy} width={30} height={30}></Image></ToggleButton>
+            <ToggleButton value={0} sx={{ padding: '5px' }}><Image alt="introduction" src={neutral} width={30} height={30}></Image></ToggleButton>
+            <ToggleButton value={1} sx={{ padding: '5px' }}><Image alt="introduction" src={happy} width={30} height={30}></Image></ToggleButton>
         </ToggleButtonGroup>
 
         <Slider
