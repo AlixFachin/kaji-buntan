@@ -25,11 +25,11 @@ export default function GuideTalk(props) {
 
     function getSaying() {
         if (props.tabnumber == 0){
-            return "まずは家事を選択！";
+            return "まずは家事を選択してね";
         }else if (props.tabnumber == 1){
-            return "あなたの担当家事、好き嫌い、かかる時間を教えてね";
+            return "あなたの ・担当家事 ・好き嫌い ・かかる時間 を教えてね";
         }else if (props.tabnumber == 2){
-            return "パートナーの好き嫌い、かかる時間を教えてね";
+            return "パートナーの ・好き嫌い ・かかる時間 を教えてね 　　　";
         }else {
             if (props.tabtabnumber == 0){
                 if (props.changeOrUnchageLeast=='unchanged'){
@@ -39,18 +39,18 @@ export default function GuideTalk(props) {
                 }
             }else if (props.tabtabnumber==1){
                 if (props.changeOrUnchageLeast == 'unchanged'){
-                    return "少し変更しました．既におおよそ公平でした！";
+                    return "今の分担は既におおよそ公平です";
                 }else{
                     let category = categoryShow(props.changedListLeast[0]);
-                    return `少し変更しました．「${ category }」の見直しはどうでしょう`;
+                    return `少し変更しました\n「${ category }」の見直しはどうでしょう`;
                 }
             }else{
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
-                    return "理想的な分担です．既におおよそ公平でした";
+                    return "今の分担は既におおよそ公平です";
                 }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
-                    return "理想的な分担です．こちらも公平ですね";
+                    return "これが最も理想的な分担です\nこちらも公平ですね";
                 }else{
-                    return "理想的な分担です";
+                    return "これが最も理想的な分担です";
                 }
             }
         }        
@@ -58,7 +58,7 @@ export default function GuideTalk(props) {
     
     return (
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'start', marginBottom: '1.5em'}}>
-            <Image alt="introduction" src={sensei} width={102} height={72}></Image>
+            <Image alt="introduction" src={sensei} width={102} height={102}></Image>
             <Box sx={{
                 backgroundColor: 'lightgrey',
                 borderRadius: '5px',
@@ -67,7 +67,7 @@ export default function GuideTalk(props) {
                 paddingX: '1em',
                 position: 'relative',
             }}>
-                <font size="5.5">{ getSaying() }</font>
+                <b className='text'><font size="5">{ getSaying() }</font></b>
                 <Box sx={{
                     boxSizing: 'content-box',
                     backgroundColor: 'transparent',

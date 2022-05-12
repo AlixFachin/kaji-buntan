@@ -30,10 +30,10 @@ export default function AllocationChip(props) {
     avatar = '../avatar/partnerAvatar.png';
   }
   //console.log(backColor);
-  console.log(props.changedList);
+  //console.log(props.changedList);
   let changedList = props.changedList;
   if (props.current != "current"){
-    console.log(changedList);
+    //console.log(changedList);
     if (changedList.includes(props.label)){
       return (<ListItem><Chip 
         sx = {{
@@ -41,7 +41,8 @@ export default function AllocationChip(props) {
         }} 
         avatar={<Avatar src = { avatar }></Avatar>}
         label={props.label}>
-          </Chip><div><a style={{color: "rgba(237,185,24)"}}> CHANGED </a></div></ListItem>
+          </Chip><div><b style={{color: "rgba(237,185,24)"}}>CHANGED</b></div>
+          </ListItem>
         )
     }else{
       return (<ListItem><Chip 

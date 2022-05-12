@@ -10,7 +10,6 @@ import partnerillust from '../public/images/partnerillust.png';
 import Image from 'next/image';
 
 export default function ResultDashboard(props) {
-  console.log("aaaaa",props.changedList);
   return (
     <Box>
       <Grid container spacing={0.5} sx={{alignItems: "flex-start", borderBottom: 1, borderColor: "divider"} } >
