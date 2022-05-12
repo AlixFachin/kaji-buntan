@@ -72,7 +72,7 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
         //console.log(isString(key));
         alist.push([AliceAllocation[i], bobUtility[AliceAllocation[i]]/aliceUtility[AliceAllocation[i]]]);
     }
-    alist.sort((a, b) => (b[1]-a[1]));
+    alist.sort((a, b) => (a[1]-b[1]));
     let t = 0;
     for (let i=0; i < alist.length; i++){
         if(isEFone(aliceUtility,bobUtility,AliceAllocation,BobAllocation)==true){
@@ -172,15 +172,15 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             ABU.push(aliceUtility[indexb]);
             BBU.push(bobUtility[indexb]);
         }
-        if(SumArray(BBU) < SumArray(BAU) - MaxArray(BAU)){
+        if(SumArray(BBU)- MaxArray(BBU) > SumArray(BAU)){
             let alist = [];
-            for (let i=0; i < aliceAllocation.length; i++){
-                let indexa = taskList.indexOf(aliceAllocation[i]);
-                alist.push([indexa, aliceUtility[indexa]/bobUtility[indexa]]);
+            for (let i=0; i < bobAllocation.length; i++){
+                let indexb = taskList.indexOf(bobAllocation[i]);
+                alist.push([indexb, aliceUtility[indexb]/bobUtility[indexb]]);
             }
             alist.sort((a, b) => (a[1]-b[1]));
-            aliceAllocation = DeleteFromArray(aliceAllocation, taskList[alist[0][0]]);
-            bobAllocation.push(taskList[alist[0][0]]);
+            bobAllocation = DeleteFromArray(bobAllocation, taskList[alist[0][0]]);
+            aliceAllocation.push(taskList[alist[0][0]]);
         }
         AAU=[];
         BAU=[];
@@ -196,15 +196,15 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             ABU.push(aliceUtility[indexb]);
             BBU.push(bobUtility[indexb]);
         }
-        if(SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU)){
+        if(SumArray(AAU) - MaxArray(AAU) > SumArray(ABU)){
             let alist = [];
-            for (let i=0; i < bobAllocation.length; i++){
-                let indexb = taskList.indexOf(bobAllocation[i]);
-                alist.push([indexb, bobUtility[indexb]/aliceUtility[indexb]]);
+            for (let i=0; i < aliceAllocation.length; i++){
+                let indexa = taskList.indexOf(aliceAllocation[i]);
+                alist.push([indexa, bobUtility[indexa]/aliceUtility[indexa]]);
             }
             alist.sort((a, b) => (a[1]-b[1]));
-            bobAllocation = DeleteFromArray(bobAllocation, taskList[alist[0][0]]);
-            aliceAllocation.push(taskList[alist[0][0]]);
+            aliceAllocation = DeleteFromArray(aliceAllocation, taskList[alist[0][0]]);
+            bobAllocation.push(taskList[alist[0][0]]);
         }
         //console.log(`AliceAllocation: ${aliceAllocation}, BobAllocation: ${bobAllocation}`);
 
