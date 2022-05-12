@@ -1,19 +1,13 @@
 import styles from '../styles/input.module.css';
 
-import Link from 'next/link';
-
 import React from 'react';
 import TaskCategoryList from "../components/taskCategoryList";
 import ResultTabComponent from '../components/resultTabComponent';
 import InputItem from '../components/inputItem';
 import  Tab from '@mui/material/Tab';
 import  Tabs from '@mui/material/Tabs';
-import { Box, Button, Container, Grid } from '@mui/material';
-import { useContext, useState } from 'react';
-
-import { firebaseStore } from 'src/firebaseApp';
-import { addDoc, collection } from 'firebase/firestore';
-import { AuthContext } from 'src/authContext';
+import { Box } from '@mui/material';
+import { useState } from 'react';
 
 import { DateTime } from 'luxon';
 
@@ -72,8 +66,6 @@ export default function InputPage() {
 
     const [ currentTab, setCurrentTab ] = useState(0);
     const [ currentTaskRepartition, setAllTaskRepartition ] = useState(getInitialTaskRepartition());
-
-    const { user } = useContext(AuthContext);
 
     const getAllInputComponents = (taskArray, personKey) => {
 
@@ -142,44 +134,6 @@ export default function InputPage() {
         }
 
         setAllTaskRepartition(currentTaskRepartition);
-
-    }
-
-    // Function to record the current task repartition (with set date = today)
-    // in the firestore database
-    async function saveRepartitionToFireStore() {
-
-        console.log('Saving task repartition!')
-        for (let category of allTasks) {
-            for (let task of category.children) {
-                const myTask = getTaskRepartition('me',task.name);
-                if (myTask && myTask.participates) {
-                    console.log(`Saving task ${task} for duration ${myTask.duration}`)
-                    await addDoc(collection(firebaseStore, "tasks"), {
-                        userId: user.uid,
-                        startDate: DateTime.now().toJSDate(),
-                        endDate: DateTime.now().plus({ minutes: myTask.duration }).toJSDate(),
-                        category: category.name,
-                        taskName: task.name,
-                        description: '',
-                    })
-                    console.log(`Success in Saving task ${task} for duration ${myTask.duration}`)                    
-                }
-                const partnerTask = getTaskRepartition('partner',task.name);
-                if (partnerTask && partnerTask.participates) {
-                    console.log(`Saving partner task ${task} for duration ${partnerTask.duration}`)
-                    await addDoc(collection(firebaseStore, "tasks"), {
-                        userId: user.uid,
-                        startDate: DateTime.now().toJSDate(),
-                        endDate: DateTime.now().plus({ minutes: partnerTask.duration }).toJSDate(),
-                        category: category.name,
-                        taskName: task.name,
-                        description: '',
-                        partner: true,
-                    })
-                }
-            }
-        }
 
     }
     
