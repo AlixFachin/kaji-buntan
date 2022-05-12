@@ -33,6 +33,7 @@
 
 h2.categoryHeader {
     background-color: var(--main-color);
+    color: white;
     border-radius: 5px;
     position: relative;
     top: -20px;
@@ -65,7 +66,7 @@ h2.categoryHeader {
 
     display: grid;
     
-    grid-template-columns: 1fr 150px 1fr 2fr;
+    grid-template-columns: 3fr 150px 1fr 2fr;
     grid-template-areas: "label action effort duration";
 
     align-items: center;
