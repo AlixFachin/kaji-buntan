@@ -1,0 +1,237 @@
+const allTasks = [
+    {
+        name: "朝",
+        children: [
+            {name: '枕、シーツを整える(洗濯交換)', checked: true},
+            {name: '子供を起こす', checked: true},
+            {name: '朝ごはんの用意', checked: true},
+            {name: '子供の水筒にお茶を入れる', checked: true},
+            {name: '子供のパジャマを畳むか洗濯へ出す', checked: true},
+            {name: '子供の髪の毛を整える', checked: true}
+        ],
+    }, {
+        name: "洗濯",
+        children: [
+            {name: '色物と白と分ける', checked: true},
+            {name: '白シャツは襟と袖を先に手洗いして漂白する', checked: true},
+            {name: '洗濯機のフィルターのホコリを取る', checked: true},
+            {name: '洗濯洗剤を買ってきて詰め替える', checked: true},
+            {name: '柔軟剤を買ってきて詰め替える', checked: true},
+            {name: '漂白剤を買ってきて詰め替える', checked: true},
+            {name: '洗濯機の中の掃除', checked: true},
+            {name: '洗濯物を干す', checked: true},
+            {name: '乾いたら取り込む', checked: true},
+            {name: '畳んで保管場所へしまう', checked: true},
+        ],
+    }, {
+        name: "洗面所の掃除",
+        children: [
+            {name: '鏡を拭く', checked: true},
+            {name: 'タオルを替える', checked: true},
+            {name: '蛇口を磨く', checked: true},
+            {name: '洗面台のホコリを取って洗う', checked: true},
+            {name: '床をモップ、拭き掃除', checked: true},
+        ],
+    }, {
+        name: "お風呂場の掃除",
+        children: [
+            {name: '浴槽を洗う', checked: true},
+            {name: '壁ドア鏡手すりを洗う', checked: true},
+            {name: '床を洗う', checked: true},
+            {name: '髪の毛を取ってネットを交換する', checked: true},
+            {name: 'ネットを交換する', checked: true},
+            {name: '排水溝を洗う', checked: true},
+            {name: 'カビを見つけたらすぐにカビキラー、洗う', checked: true},
+            {name: '風呂マットを洗って交換する', checked: true},
+        ],
+    }, {
+        name: "トイレ掃除",
+        children: [
+            {name: 'トイレを洗ったり拭いたりする', checked: true},
+            {name: '壁・床・棚を拭く', checked: true},
+            {name: 'トイレマット・フタカバーを洗って交換する', checked: true},
+            {name: 'トイレットペーパーを買ってきて棚に補充', checked: true},
+            {name: 'トイレの洗剤を買ってきて補充', checked: true},
+        ],
+    }, {
+        name: "キッチン掃除",
+        children: [
+            {name: '食器洗う', checked: true},
+            {name: '食器を拭く', checked: true},
+            {name: 'シンクの水気を拭く', checked: true},
+            {name: '食器をしまう', checked: true},
+            {name: 'ふきんの洗浄・補充', checked: true},
+            {name: '調味料の量把握・補充', checked: true},
+            {name: 'キッチン台の片付け・掃除', checked: true},
+            {name: 'フライパン・調理器具などをしまう', checked: true},
+            {name: 'ガス台・ごとくの拭き掃除', checked: true},
+            {name: '食洗機の中と外、フチを掃除する', checked: true},
+            {name: '炊飯器の洗浄・掃除', checked: true},
+            {name: 'レンジ・オーブンの掃除', checked: true},
+            {name: 'トースターの掃除', checked: true},
+            {name: 'コーヒーメーカーの掃除', checked: true},
+            {name: 'キッチン壁の拭き掃除', checked: true},
+            {name: 'キッチン床の拭き掃除', checked: true},
+        ],
+    }, {
+        name: "料理",
+        children: [
+            {name: '料理冷蔵庫にあるものを見つつ、献立を決め、栄養バランスを考えて買い物', checked: true},
+            {name: '買い物したものを冷蔵庫に入れる', checked: true},
+            {name: '冷蔵庫にあるものを消費期限や使う日を決めて管理する', checked: true},
+            {name: '冷蔵庫にあるものと買ってきたものを合わせて料理する', checked: true},
+            {name: '彩りを考えて盛り付ける', checked: true},
+            {name: 'テーブルを常に片付ける', checked: true},
+            {name: 'テーブルを拭く', checked: true},
+            {name: '配膳', checked: true},
+            {name: '食器を片付ける', checked: true},
+            {name: 'お茶を作る', checked: true},
+            {name: '浄水器のフィルター交換', checked: true},
+            {name: '食器用洗剤を買ってきて補充', checked: true},
+            {name: 'まな板を除菌・漂白', checked: true},
+            {name: '包丁を研く', checked: true},
+            {name: '換気扇の掃除', checked: true},
+        ],
+    }, {
+        name: "お風呂",
+        children: [
+            {name: 'お風呂を入れる', checked: true},
+            {name: 'シャンプー・コンディショナー・石鹸の買い出しと補充', checked: true},
+            {name: '使ったバスタオルを回収・干す・交換', checked: true},
+        ],
+    },{
+        name: "家の掃除",
+        children: [
+            {name: '家中で掃除機かける', checked: true},
+            {name: '服・おもちゃ・文具、出しっ放しのものをしまう', checked: true},
+            {name: '子供のゴミを拾って捨てる', checked: true},
+            {name: '玄関の掃除', checked: true},
+            {name: '靴を整頓して並べる', checked: true},
+            {name: '傘をしまう', checked: true},
+            {name: 'テレビ、テレビ台の掃除', checked: true},
+            {name: '床の掃除、モップかける', checked: true},
+            {name: '物の整理整頓', checked: true},
+        ],
+    },{
+        name: "雑用",
+        children: [
+            {name: '家族のスケジュールをカレンダーに書き込んで把握・管理', checked: true},
+            {name: '郵便物を取りに行く', checked: true},
+            {name: '郵便物を分けて捨てる', checked: true},
+            {name: '郵便物の支払いもの仕分け・管理', checked: true},
+            {name: '注文・補充(米・ビール)', checked: true},
+            {name: '日用品の買い足し・補充', checked: true},
+            {name: 'アイロン', checked: true},
+            {name: '庭やベランダの植物に水やり', checked: true},
+            {name: '加湿器に水入れる', checked: true},
+        ],
+    },{
+        name: "口座・お金の管理",
+        children: [
+            {name: '固定費、引き落としの管理：住宅・車、管理費駐車場、保険、光熱費、年金、携帯なと', checked: true},
+            {name: '現金・カードの管理：食費、交際、交通、衣服、生活用品、教育費、なと', checked: true},
+            {name: '確定申告をする', checked: true},
+            {name: '振込の管理：給食費、塾、英語教室なと', checked: true},
+            {name: '貯金の捻出・口座分散(教育資金・貯金)', checked: true},
+            {name: '車検・税金・保険・通信・光熱費などの把握・比較', checked: true},
+        ],
+    },{
+        name: "子供部屋",
+        children: [
+            {name: '子供部屋の掃除', checked: true},
+            {name: '枕カバー・ベッドカバーの洗濯・交換', checked: true},
+            {name: '2つの机の消しゴムのカスを掃除機で吸う', checked: true}
+        ],
+    },{
+        name: "子供・学校",
+        children: [
+            {name: '子供の交友の把握・管理', checked: true},
+            {name: '子供の勉強の管理', checked: true},
+            {name: '子供の行事ごとの持ち物などの把握', checked: true},
+            {name: '子供のスマホ・ゲーム・テレビ時間の管理', checked: true},
+            {name: '子供の習い事の管理・送迎', checked: true},
+            {name: '水筒を洗って、除菌する', checked: true},
+            {name: '体操服を洗う・セットにする', checked: true},
+            {name: 'テストや学校のお便りプリントの管理', checked: true},
+            {name: '学校行事に参加する', checked: true},
+            {name: '学校のPTA活動に参加する', checked: true},
+            {name: '地域集会に参加する', checked: true},
+            {name: '保護者会に出る', checked: true},
+            {name: '写真をアルバムに入れて整理、もしくは電子データで保管', checked: true},
+            {name: '子供の病院予約', checked: true},
+            {name: '子供のお菓子を買ってきて補充', checked: true},
+        ],
+    },{
+        name: "ゴミ",
+        children: [
+            {name: 'ゴミ集める・分ける(プラ・可燃・不燃・缶・びん・ペット・紙など)', checked: true},
+            {name: 'ペットボトルのふたとフィルム、瓶のフィルムはがす', checked: true},
+            {name: 'ゴミ出し', checked: true},
+            {name: 'ゴミ箱を洗う', checked: true},
+            {name: 'ゴミ箱にゴミ袋装着', checked: true},
+            {name: 'ダンボールをつぶして捨てる', checked: true},
+        ],
+    },{
+        name: "ペット関連",
+        children: [
+            {name: '朝の散歩に連れていく', checked: true},
+            {name: '夕方の散歩に連れていく', checked: true},
+            {name: '餌をやる', checked: true},
+            {name: '餌を買ってくる', checked: true},
+            {name: '遊んであげる', checked: true},
+            {name: '毛並みを整える', checked: true},
+        ],
+    },{
+        name: "介護",
+        children: [
+            {name: '朝起こす', checked: true},
+            {name: '訪問介護、デイケアのお迎えをする', checked: true},
+            {name: '食事の手伝いをする', checked: true},
+            {name: 'ベット周りの整理整頓をする', checked: true},
+            {name: 'トイレの介助', checked: true},
+            {name: '外出の介助', checked: true},
+            {name: '通院の手伝い', checked: true},
+        ],
+    }
+];
+
+const backgroundColorList = {
+    '朝' : 'rgba(255, 99, 132, 0.2)',
+    '洗濯' : 'rgba(75, 192, 192, 0.2)',
+    '洗面所の掃除' : 'rgba(54, 162, 235, 0.2)',
+    'お風呂場の掃除' : 'rgba(153, 102, 255, 0.2)',
+    'トイレ掃除' : 'rgba(255, 255, 0, 0.2)',
+    'キッチン掃除' : 'rgba(139, 0, 139, 0.2)',
+    '料理' : 'rgba(2, 203, 2, 0.2)',
+    'お風呂' : 'rgba(0, 0, 207, 0.2)',
+    '家の掃除' : 'rgba(210 ,180 ,140, 0.2)',
+    '雑用' : 'rgba(201, 201, 20, 0.2)',
+    '口座・お金の管理' : 'rgba(128, 0, 0, 0.2)',
+    '子供部屋' : 'rgba(128,128,128, 0.2)',
+    '子供・学校' : 'rgba(210 ,180 ,140, 0.2)',
+    'ゴミ' : 'rgba(139, 30, 139, 0.2)',
+    'ペット関連' : 'rgba(201, 20, 20, 0.2)',
+    '介護' : 'rgba(0, 0, 207, 0.2)',
+}
+const borderColorList = {
+    '朝' : 'rgba(255, 99, 132)',
+    '洗濯' : 'rgba(75, 192, 192)',
+    '洗面所の掃除' : 'rgba(54, 162, 235)',
+    'お風呂場の掃除' : 'rgba(153, 102, 255)',
+    'トイレ掃除' : 'rgba(255, 255, 0)',
+    'キッチン掃除' : 'rgba(139, 0, 139)',
+    '料理' : 'rgba(2, 203, 2)',
+    'お風呂' : 'rgba(0, 0, 207)',
+    '家の掃除' : 'rgba(210 ,180 ,140)',
+    '口座・お金の管理' : 'rgba(128, 0, 0)',
+    '雑用' : 'rgba(201, 201, 20)',
+    '子供部屋' : 'rgba(128,128,128)',
+    '子供・学校' : 'rgba(210 ,180 ,140)',
+    'ゴミ' : 'rgba(139, 30, 139)',
+    'ペット関連' : 'rgba(201, 20, 20)',
+    '介護' : 'rgba(0, 0, 207)',
+}
+
+
+export default { allTasks, backgroundColorList, borderColorList };
+

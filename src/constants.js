@@ -2,24 +2,24 @@ const allTasks = [
     {
         name: "朝の準備",
         children: [
-            {name: '枕、シーツを整える(洗濯交換)', checked: true},
+            {name: '枕、シーツを整える(洗濯交換)', checked: false},
             {name: '子供を起こす', checked: false},
-            {name: '朝ごはんの用意', checked: true},
+            {name: '朝ごはんの用意', checked: false},
         ],
     }, {
         name: "料理",
         children: [
-            {name: '献立を決めて買い物', checked: true},
-            {name: '買い物したものを冷蔵庫に入れる', checked: true},
-            {name: '冷蔵庫にあるものの消費期限の管理する', checked: true},
-            {name: '料理する', checked: true},
-            {name: '彩りを考えて盛り付ける', checked: true},
-            {name: 'テーブルを拭く', checked: true},
-            {name: '配膳', checked: true},
-            {name: '食器を片付ける', checked: true},
-            {name: '食器用洗剤を買ってきて補充', checked: true},
-            {name: 'まな板を除菌・漂白', checked: true},
-            {name: '包丁を研く', checked: true},
+            {name: '献立を決めて買い物', checked: false},
+            {name: '買い物したものを冷蔵庫に入れる', checked: false},
+            {name: '冷蔵庫にあるものの消費期限の管理する', checked: false},
+            {name: '料理する', checked: false},
+            {name: '彩りを考えて盛り付ける', checked: false},
+            {name: 'テーブルを拭く', checked: false},
+            {name: '配膳', checked: false},
+            {name: '食器を片付ける', checked: false},
+            {name: '食器用洗剤を買ってきて補充', checked: false},
+            {name: 'まな板を除菌・漂白', checked: false},
+            {name: '包丁を研く', checked: false},
         ],
     }, {
         name: "洗濯",
@@ -28,25 +28,16 @@ const allTasks = [
             {name: '洗濯洗剤を買ってきて詰め替える', checked: false},
             {name: '漂白剤、柔軟剤を買ってきて詰め替える', checked: false},
             {name: '洗濯機の中の掃除', checked: false},
-            {name: '洗濯物を干す', checked: true},
-            {name: '乾いたら取り込む', checked: true},
-            {name: '畳んでしまう', checked: true},
+            {name: '洗濯物を干す', checked: false},
+            {name: '乾いたら取り込む', checked: false},
+            {name: '畳んでしまう', checked: false},
         ],
     }, {
         name: "お風呂の準備",
         children: [
-            {name: 'お風呂を入れる', checked: true},
-            {name: 'シャンプー・コンディショナー・石鹸の買い出しと補充', checked: false},
-            {name: '使ったバスタオルを回収・干す・交換', checked: true},
-        ],
-    },{
-        name: "掃除 (洗面所)",
-        children: [
-            {name: '鏡を拭く', checked: false},
-            {name: 'タオルを替える', checked: false},
-            {name: '蛇口を磨く', checked: false},
-            {name: '洗面台のホコリを取って洗う', checked: false},
-            {name: '床をモップ、拭き掃除', checked: false},
+            {name: 'お風呂を入れる', checked: false},
+            {name: 'シャンプーの買い出し、補充', checked: false},
+            {name: '使ったバスタオルを回収・干す・交換', checked: false},
         ],
     }, {
         name: "掃除 (お風呂場)",
@@ -92,7 +83,7 @@ const allTasks = [
         name: "掃除 (家全体)",
         children: [
             {name: '家中で掃除機かける', checked: false},
-            {name: '服・おもちゃ・文具、出しっ放しのものをしまう', checked: false},
+            {name: '文具、出しっ放しをしまう', checked: false},
             {name: '子供のゴミを拾って捨てる', checked: false},
             {name: '玄関の掃除', checked: false},
             {name: '靴を整頓して並べる', checked: false},
@@ -105,17 +96,16 @@ const allTasks = [
     },{
         name: "ゴミ捨て",
         children: [
-            {name: 'ゴミ集める・分ける(プラ・可燃・不燃・缶・びん・ペット・紙など)', checked: false},
-            {name: 'ペットボトルのふたとフィルム、瓶のフィルムはがす', checked: false},
+            {name: 'ゴミ集める・分ける', checked: false},
+            {name: 'ペットボトルのフィルムはがす', checked: false},
             {name: 'ゴミ出し', checked: false},
-            {name: 'ゴミ箱を洗う', checked: false},
             {name: 'ゴミ箱にゴミ袋装着', checked: false},
             {name: 'ダンボールをつぶして捨てる', checked: false},
         ],
     },{
         name: "家庭内の雑用",
         children: [
-            {name: '家族のスケジュールをカレンダーに書き込んで把握・管理', checked: false},
+            {name: '家族カレンダー管理', checked: false},
             {name: '郵便物を取りに行く', checked: false},
             {name: '郵便物を分けて捨てる', checked: false},
             {name: '郵便物の支払いもの仕分け・管理', checked: false},
@@ -176,13 +166,11 @@ const backgroundColorList = {
     '掃除 (トイレ)' : 'rgba(255, 255, 0, 0.2)',
     '掃除 (キッチン)' : 'rgba(139, 0, 139, 0.2)',
     '料理' : 'rgba(2, 203, 2, 0.2)',
-    'お風呂' : 'rgba(0, 0, 207, 0.2)',
-    '家の掃除' : 'rgba(210 ,180 ,140, 0.2)',
-    '雑用' : 'rgba(201, 201, 20, 0.2)',
-    '口座・お金の管理' : 'rgba(128, 0, 0, 0.2)',
-    '子供部屋' : 'rgba(128,128,128, 0.2)',
+    'お風呂の準備' : 'rgba(0, 0, 207, 0.2)',
+    '掃除 (家全体)' : 'rgba(210 ,180 ,140, 0.2)',
+    '家庭内の雑用' : 'rgba(201, 201, 20, 0.2)',
     '子供・学校' : 'rgba(210 ,180 ,140, 0.2)',
-    'ゴミ' : 'rgba(139, 30, 139, 0.2)',
+    'ゴミ捨て' : 'rgba(139, 30, 139, 0.2)',
     'ペット関連' : 'rgba(201, 20, 20, 0.2)',
     '介護' : 'rgba(0, 0, 207, 0.2)',
 }
@@ -194,17 +182,21 @@ const borderColorList = {
     '掃除 (トイレ)' : 'rgba(255, 255, 0)',
     '掃除 (キッチン)' : 'rgba(139, 0, 139)',
     '料理' : 'rgba(2, 203, 2)',
-    'お風呂' : 'rgba(0, 0, 207)',
-    '家の掃除' : 'rgba(210 ,180 ,140)',
-    '口座・お金の管理' : 'rgba(128, 0, 0)',
-    '雑用' : 'rgba(201, 201, 20)',
-    '子供部屋' : 'rgba(128,128,128)',
+    'お風呂の準備' : 'rgba(0, 0, 207)',
+    '掃除 (家全体)' : 'rgba(210 ,180 ,140)',
+    '家庭内の雑用' : 'rgba(201, 201, 20)',
     '子供・学校' : 'rgba(210 ,180 ,140)',
-    'ゴミ' : 'rgba(139, 30, 139)',
+    'ゴミ捨て' : 'rgba(139, 30, 139)',
     'ペット関連' : 'rgba(201, 20, 20)',
     '介護' : 'rgba(0, 0, 207)',
 }
 
 
-export default { allTasks, backgroundColorList, borderColorList };
+const myBackColor = 'rgba(255, 138, 128 ,0.3)'
+const myBackColorBorder = 'rgba(255, 138, 128)'
+
+const partnerBackColor = 'rgba(140, 158, 255, 0.3)'
+const partnerBackColorBorder = 'rgba(140, 158, 255)'
+
+export default { allTasks, backgroundColorList, borderColorList, myBackColor, partnerBackColor, myBackColorBorder, partnerBackColorBorder};
 

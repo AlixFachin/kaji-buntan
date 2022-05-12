@@ -2,6 +2,8 @@
 import constants from "../src/constants";
 const allTasks = constants.allTasks
 
+import calculateBurden from "../src/calculateBurden";
+
 function DeleteFromArray(Array1,item){
     const Array2 = []
     for (let i=0; i < Array1.length; i++){
@@ -84,28 +86,59 @@ function adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition)
         }
     }
 
+    const aliceTask = [];
+    for (let i of AliceAllocation) {
+        aliceTask.push(taskList[i]);
+    }
+    const bobTask = [];
+    for (let i of BobAllocation) {
+        bobTask.push(taskList[i]);
+    }
+
     const myTasks = {};
     const partnerTasks = {};
 
-    for (let i of AliceAllocation) {
-        let category = categoryShow(taskList[i]);
-        myTasks[taskList[i]] = {
-            participates: true,
-            effort: currentTaskRepartition.myTasks[taskList[i]].effort,
-            duration : currentTaskRepartition.myTasks[taskList[i]].duration,
-            category : category,
-        };
+    for (let c of allTasks){
+        for (let task of c.children){
+            if (aliceTask.includes(task.name)){
+                myTasks[task.name] = {
+                    participates: true,
+                    effort: currentTaskRepartition.myTasks[task.name].effort,
+                    duration : currentTaskRepartition.myTasks[task.name].duration,
+                    category : currentTaskRepartition.myTasks[task.name].category,
+                };
+            }
+            else{
+                myTasks[task.name] = {
+                    participates: false,
+                    effort: currentTaskRepartition.myTasks[task.name].effort,
+                    duration : currentTaskRepartition.myTasks[task.name].duration,
+                    category : currentTaskRepartition.myTasks[task.name].category,
+                };
+            }
+        }
     }
-    for (let i of BobAllocation) {
-        let category = categoryShow(taskList[i]);
-        partnerTasks[taskList[i]] = {
-            participates: true,
-            effort: currentTaskRepartition.partnerTasks[taskList[i]].effort,
-            duration : currentTaskRepartition.partnerTasks[taskList[i]].duration,
-            category : category,
-        };
+    for (let c of allTasks){
+        for (let task of c.children){
+            if (bobTask.includes(task.name)){
+                partnerTasks[task.name] = {
+                    participates: true,
+                    effort: currentTaskRepartition.partnerTasks[task.name].effort,
+                    duration : currentTaskRepartition.partnerTasks[task.name].duration,
+                    category : currentTaskRepartition.partnerTasks[task.name].category,
+                };
+            }
+            else{
+                partnerTasks[task.name] = {
+                    participates: false,
+                    effort: currentTaskRepartition.partnerTasks[task.name].effort,
+                    duration : currentTaskRepartition.partnerTasks[task.name].duration,
+                    category : currentTaskRepartition.partnerTasks[task.name].category,
+                };
+            }
+        }
     }
-    //console.log({ myTasks: myTasks, partnerTasks: partnerTasks})
+    //console.log("Output of the AW algorithm",{ myTasks: myTasks, partnerTasks: partnerTasks})
     return { myTasks: myTasks, partnerTasks: partnerTasks};
 }
 
@@ -174,27 +207,52 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             aliceAllocation.push(taskList[alist[0][0]]);
         }
         //console.log(`AliceAllocation: ${aliceAllocation}, BobAllocation: ${bobAllocation}`);
+
         const myTasks = {};
         const partnerTasks = {};
-        for (let task of aliceAllocation) {
-            let category = categoryShow(task);
-            myTasks[task] = {
-                participates: true,
-                effort: currentTaskRepartition.myTasks[task].effort,
-                duration : currentTaskRepartition.myTasks[task].duration,
-                category : category,
-            };
+
+        for (let c of allTasks){
+            for (let task of c.children){
+                if (aliceAllocation.includes(task.name)){
+                    myTasks[task.name] = {
+                        participates: true,
+                        effort: currentTaskRepartition.myTasks[task.name].effort,
+                        duration : currentTaskRepartition.myTasks[task.name].duration,
+                        category : currentTaskRepartition.myTasks[task.name].category,
+                    };
+                }
+                else{
+                    myTasks[task.name] = {
+                        participates: false,
+                        effort: currentTaskRepartition.myTasks[task.name].effort,
+                        duration : currentTaskRepartition.myTasks[task.name].duration,
+                        category : currentTaskRepartition.myTasks[task.name].category,
+                    };
+                }
+            }
         }
-        for (let task of bobAllocation) {
-            let category = categoryShow(task);
-            partnerTasks[task] = {
-                participates: true,
-                effort: currentTaskRepartition.partnerTasks[task].effort,
-                duration : currentTaskRepartition.partnerTasks[task].duration,
-                category : category,
-            };
+
+        for (let c of allTasks){
+            for (let task of c.children){
+                if (bobAllocation.includes(task.name)){
+                    partnerTasks[task.name] = {
+                        participates: true,
+                        effort: currentTaskRepartition.partnerTasks[task.name].effort,
+                        duration : currentTaskRepartition.partnerTasks[task.name].duration,
+                        category : currentTaskRepartition.partnerTasks[task.name].category,
+                    };
+                }
+                else{
+                    partnerTasks[task.name] = {
+                        participates: false,
+                        effort: currentTaskRepartition.partnerTasks[task.name].effort,
+                        duration : currentTaskRepartition.partnerTasks[task.name].duration,
+                        category : currentTaskRepartition.partnerTasks[task.name].category,
+                    };
+                }
+            }
         }
-        //console.log({ myTasks: myTasks, partnerTasks: partnerTasks})
+        console.log("Output of the least exchange algorithm", { myTasks: myTasks, partnerTasks: partnerTasks})
       return { myTasks: myTasks, partnerTasks: partnerTasks};
     }
 }
@@ -211,9 +269,9 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
         for (let task of category.children){
             if (task.checked){
                 const myTask1 = currentTaskRepartition['myTasks'][task.name];
-                aliceUtility.push((myTask1.effort+1)*(11/(myTask1.duration+1)));
+                aliceUtility.push(calculateBurden(myTask1.effort, myTask1.duration));
                 const partnerTask1 = currentTaskRepartition['partnerTasks'][task.name];
-                bobUtility.push((partnerTask1.effort+3)*(partnerTask1.duration+3));
+                bobUtility.push(calculateBurden(partnerTask1.effort, partnerTask1.duration));
                 taskList.push(task.name);
                 //console.log(myTask1);
                 if (myTask1 && myTask1.participates){
@@ -225,12 +283,10 @@ export default function makeAliceBobUtility(allTasks, currentTaskRepartition){
         }
     }
 
-    //console.log([aliceUtility, bobUtility, aliceAllocation, bobAllocation, taskList]);
-    //console.log(currentTaskRepartition);
     let adjustedWinnerTaskRepartition = adjustedWinner(aliceUtility,bobUtility,taskList,currentTaskRepartition);
 
     let leastChangeAllocationTaskRepartition = leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAllocation,taskList,currentTaskRepartition);
-    //console.log("kkkk",[adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition]);
+
     return [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition];
 }
 

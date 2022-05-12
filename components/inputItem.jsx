@@ -3,6 +3,11 @@ import styles from 'styles/input.module.css';
 import { useEffect, useState } from 'react';
 import { ToggleButton, ToggleButtonGroup, Slider } from '@mui/material';
 
+import bad from '../public/images/bad.png';
+import soso from '../public/images/soso.png';
+import good from '../public/images/good.png';
+import Image from 'next/image';
+
 export default function InputItem(props) {
 
     const { person, label, onTaskChange, initialValue } = props;
@@ -14,19 +19,19 @@ export default function InputItem(props) {
     const sliderMarks = [
         {
             value: 10,
-            label: '10',
+            label: '10分',
         },
         {
             value: 30,
-            label: '30',
+            label: '30分',
         },
         {
             value: 60,
-            label: '60',
+            label: '60分',
         },
         {
             value: 90,
-            label: '90',
+            label: '90分',
         }
     ];
 
@@ -57,9 +62,12 @@ export default function InputItem(props) {
             onChange={ (_, newValue) => {
                 if (newValue !== null) setHappyLevel(newValue);
             }}>
-            <ToggleButton value={-1}>😰</ToggleButton>
-            <ToggleButton value={0}>😐</ToggleButton>
-            <ToggleButton value={1}>😀</ToggleButton>
+            {/* <ToggleButton value={-1}>👎</ToggleButton>
+            <ToggleButton value={0}>👌</ToggleButton>
+            <ToggleButton value={-1}>👍</ToggleButton> */}
+            <ToggleButton value={-1}><Image alt="introduction" src={bad} width={25} height={30}></Image></ToggleButton>
+            <ToggleButton value={0}><Image alt="introduction" src={soso} width={25} height={30}></Image></ToggleButton>
+            <ToggleButton value={1}><Image alt="introduction" src={good} width={25} height={30}></Image></ToggleButton>
         </ToggleButtonGroup>
 
         <Slider

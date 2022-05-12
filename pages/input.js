@@ -22,6 +22,8 @@ import constants from "../src/constants";
 import makeAliceBobUtility from "../src/mainAlgorithm";
 import AllocationList from 'components/allocationList';
 
+import GuideTalk from 'components/guideTalk';
+
 // TabPanel -> https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -85,7 +87,7 @@ export default function InputPage() {
             if (activeTasks.length > 0) {
                 returnArray.push(
                     <div className={ styles.categorySection } key={personKey[0] + category.name}>
-                        <h2 className={ styles.categoryHeader }>{ category.name }</h2>
+                        <h2 className={ styles.categoryHeader } style={{ color: 'white' }}>{ category.name }</h2>
                         { activeTasks }
                     </div>
                 );
@@ -133,8 +135,6 @@ export default function InputPage() {
         // "私の評価”を変更すれば、パートナーの評価も自動的に設定します。
         if (person == 'me') {
             currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
-            // defaultでタスクは同じ長さにします。（後でパートナーは手動で更新できます）
-            currentTaskRepartition['partnerTasks'][taskName].duration = taskRepartitionItem.duration;
         }
 
         setAllTaskRepartition(currentTaskRepartition);
@@ -203,13 +203,16 @@ export default function InputPage() {
             </Tabs>
             
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
+                <GuideTalk tabnumber={0}></GuideTalk>
                 <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
             </TabPanel>
             <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
+                <GuideTalk tabnumber={1}></GuideTalk>
                 <h2>私のタスクを入力</h2>
                 { getAllInputComponents(allTasks, 'me') }
             </TabPanel>
             <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
+                <GuideTalk tabnumber={2}></GuideTalk>
                 <h2>パートナーのタスク入力</h2>
                 { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
@@ -227,7 +230,7 @@ export default function InputPage() {
               >
               </ResultTabComponent>
             </TabPanel>
-            <Grid container spacing={12} justifyContent="center">
+            {/* <Grid container spacing={12} justifyContent="center">
                 <Grid item xs={2} justifyContent="center">
                     <Link href="/" passHref={true}><Button variant="contained" color="secondary">Cancel</Button></Link>
                 </Grid>
@@ -236,7 +239,7 @@ export default function InputPage() {
                         setCurrentTab(currentTab + 1)
                     }}>Next</Button>
                 </Grid>
-            </Grid>
+            </Grid> */}
         </div>
     );
 }
