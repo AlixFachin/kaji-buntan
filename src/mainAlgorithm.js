@@ -47,7 +47,7 @@ function isEFone(AliceUtility,BobUtility,AliceAllocation,BobAllocation){
     //console.log("SumArray(BBU)",SumArray(BBU));
     //console.log("SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU)",SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU));
     //console.log("SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU)",SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
-    return (SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU) && SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
+    return (SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU));
     
 }
 

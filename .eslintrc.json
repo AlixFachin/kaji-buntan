@@ -3,6 +3,6 @@
   "rules": {
     "no-undef": "error",
     "semi-style": ["error", "last"],
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off"
   }
 }

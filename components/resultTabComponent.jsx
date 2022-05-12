@@ -22,8 +22,8 @@ export default function ResultTabComponent(props) {
     <TabContext value={tabNum}>
       <TabList onChange={handleChangeTab}>
         <Tab label="今の家事分担" value="1" />
-        <Tab label="少しだけ変更" value="2" />
-        <Tab label="全家事で理想的な分担" value="3" />
+        <Tab label="少し理想的な分担" value="2" />
+        <Tab label="理想的な分担" value="3" />
       </TabList>
       <TabPanel value="1" sx={{ width: 1}}>
       <GuideTalk tabnumber = {3} tabtabnumber={0} changeOrUnchageLeast={changeOrUnchageLeast}></GuideTalk>

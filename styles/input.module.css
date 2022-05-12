@@ -8,8 +8,8 @@
     justify-content: flex-start;
     align-items: center;
 
-    border: 3px solid var(--main-color);
-    border-radius: 20px;
+    /*border: 3px solid var(--main-color);
+    border-radius: 20px; */
 
     padding: 1em;
 
