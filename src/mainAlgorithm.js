@@ -47,8 +47,8 @@ function isEFone(AliceUtility,BobUtility,AliceAllocation,BobAllocation){
     //console.log("SumArray(BBU)",SumArray(BBU));
     //console.log("SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU)",SumArray(AAU) >= SumArray(ABU) - MaxArray(ABU));
     //console.log("SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU)",SumArray(BBU) >= SumArray(BAU)- MaxArray(BAU));
-    return (SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU));
-    
+    return (SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU) && SumArray(BBU) - MaxArray(BBU) <= SumArray(BAU));
+
 }
 
 function categoryShow(task){
@@ -196,7 +196,7 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             ABU.push(aliceUtility[indexb]);
             BBU.push(bobUtility[indexb]);
         }
-        if(SumArray(AAU) < SumArray(ABU) - MaxArray(ABU)){
+        if(SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU)){
             let alist = [];
             for (let i=0; i < bobAllocation.length; i++){
                 let indexb = taskList.indexOf(bobAllocation[i]);
