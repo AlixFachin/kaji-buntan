@@ -24,8 +24,8 @@ export default function GuideTalk(props) {
         return (
             <Box sx={{ flexGrow: 1 }}>
                 <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "まずは家事を選択！" }</font></b>
+                <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                <b><font size="5.5">{ "　まずは家事を選択！" }</font></b>
                 <h1></h1>
             </Box>
          )
@@ -33,8 +33,8 @@ export default function GuideTalk(props) {
         return (
             <Box sx={{ flexGrow: 1 }}>
                 <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "あなたの担当家事、好き嫌い、かかる時間を教えてね" }</font></b>
+                <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                <b><font size="5.5">{ "　あなたの　・担当家事　・好き嫌い　・かかる時間　を教えてね" }</font></b>
                 <h1></h1>
             </Box>
          )
@@ -42,8 +42,8 @@ export default function GuideTalk(props) {
         return (
             <Box sx={{ flexGrow: 1 }}>
                 <h1></h1>
-                <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                <b><font size="5.5">{ "パートナーの好き嫌い、かかる時間を教えてね" }</font></b>
+                <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                <b><font size="5.5">{ "　パートナーの　・好き嫌い　・かかる時間　を教えてね　　　　" }</font></b>
                 <h1></h1>
             </Box>
          )
@@ -52,16 +52,16 @@ export default function GuideTalk(props) {
             if (props.changeOrUnchageLeast=='unchanged'){
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　今の家事分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
             }else{
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "今の家事分担です" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　今の家事分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
@@ -70,17 +70,17 @@ export default function GuideTalk(props) {
             if (props.changeOrUnchageLeast=='unchanged'){
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "少し変更しました．既におおよそ公平でした！" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　変更は必要なさそうです．既におおよそ公平でした" }</font></b>
                         <h1></h1>
                     </Box>
                  )
             }else{
                 let category = categoryShow(props.changedListLeast[0]);
-                let saying = "少し変更しました．「"+category+"」の見直しはどうでしょう";
+                let saying = '　少し変更した分担です「'+category+'」の見直しはどうでしょう';
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
                         <b><font size="5.5">{ saying }</font></b>
                         <h1></h1>
                     </Box>
@@ -90,24 +90,24 @@ export default function GuideTalk(props) {
             if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='unchanged'){
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です．既におおよそ公平でした" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　理想的な分担です．既におおよそ公平でした" }</font></b>
                         <h1></h1>
                     </Box>
                  )
             }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です．こちらも公平ですね" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　理想的な分担です．こちらも公平ですね" }</font></b>
                         <h1></h1>
                     </Box>
                  )
             }else{
                 return (
                     <Box sx={{ flexGrow: 1 }}>
-                        <Image alt="introduction" src={sensei} width={102} height={72}></Image>
-                        <b><font size="5.5">{ "理想的な分担です" }</font></b>
+                        <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+                        <b><font size="5.5">{ "　理想的な分担です" }</font></b>
                         <h1></h1>
                     </Box>
                  )
