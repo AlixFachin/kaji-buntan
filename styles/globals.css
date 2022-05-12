@@ -62,3 +62,7 @@ button {
   border-width: 1px;
   border-color: var(--error-color);
 }
+
+.text {
+  white-space: pre-wrap;
+}

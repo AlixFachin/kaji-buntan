@@ -41,7 +41,8 @@ export default function AllocationChip(props) {
         }} 
         avatar={<Avatar src = { avatar }></Avatar>}
         label={props.label}>
-          </Chip><div><a style={{color: "rgba(237,185,24)"}}> CHANGED </a></div></ListItem>
+          </Chip><div><b style={{color: "rgba(237,185,24)"}}>CHANGED</b></div>
+          </ListItem>
         )
     }else{
       return (<ListItem><Chip 

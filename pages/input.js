@@ -137,8 +137,14 @@ export default function InputPage() {
         currentTaskRepartition[personKey][taskName].userModified = true;
 
         // "私の評価”を変更すれば、パートナーの評価も自動的に設定します（ユーザーから変更がなかった場合のみ）
-        if (person == 'me' && !currentTaskRepartition['partnerTasks'][taskName].userModified) {
+        // if (person == 'me' && !currentTaskRepartition['partnerTasks'][taskName].userModified) {
+        //     currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
+        // }
+        if (person == 'me') {
             currentTaskRepartition['partnerTasks'][taskName].participates = !taskRepartitionItem.participates;
+        }
+        if (person == 'partner') {
+            currentTaskRepartition['myTasks'][taskName].participates = !taskRepartitionItem.participates;
         }
 
         setAllTaskRepartition(currentTaskRepartition);
@@ -207,14 +213,17 @@ export default function InputPage() {
             </Tabs>
             
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
+                <br/>
                 <GuideTalk tabnumber={0}></GuideTalk>
                 <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
             </TabPanel>
             <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
+                <br/>
                 <GuideTalk tabnumber={1}></GuideTalk>
                 { getAllInputComponents(allTasks, 'me') }
             </TabPanel>
             <TabPanel value={ currentTab } index={2} sx={{ width: 1}}>
+                <br/>
                 <GuideTalk tabnumber={2}></GuideTalk>
                 { getAllInputComponents(allTasks, 'partner') }
             </TabPanel>
