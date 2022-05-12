@@ -6,8 +6,6 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-import UserSettings from "./userSettings";
-
 import logoHorizon from '../public/images/logo_horizontal.png';
 import Image from 'next/image';
 
