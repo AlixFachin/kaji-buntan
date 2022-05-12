@@ -48,9 +48,9 @@ export default function GuideTalk(props) {
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
                     return "今の分担は既におおよそ公平です";
                 }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
-                    return "これが理想的な分担です\nこちらも公平ですね";
+                    return "これが最も理想的な分担です\nこちらも公平ですね";
                 }else{
-                    return "これが理想的な分担です";
+                    return "これが最も理想的な分担です";
                 }
             }
         }        

@@ -17,7 +17,7 @@ export default function ResultTabComponent(props) {
   const handleChangeTab = (_, newValue) => {
     setTabNum(newValue);
   }
-  console.log(changedListLeast);
+  //console.log(changedListLeast);
   return (
     <TabContext value={tabNum}>
       <TabList onChange={handleChangeTab}>
