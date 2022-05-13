@@ -47,10 +47,10 @@ export default function GuideTalk(props) {
             }else{
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
                     return "今の分担は既におおよそ公平です";
-                }else if (props.changeOrUnchageLeast=='unchanged' && props.changeOrUnchageAW=='changed'){
-                    return "これが最も理想的な分担です\nこちらも公平ですね";
+                }else if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'changed'){
+                    return "独自の計算方法で導き出した結果です\nこちらも公平ですね";
                 }else{
-                    return "これが最も理想的な分担です";
+                    return "独自の計算方法で導き出した結果です";
                 }
             }
         }        
