@@ -1,10 +1,11 @@
 import List from '@mui/material/List';
 import TaskCategoryListItem from './taskCategoryListItem';
-import sensei from '../public/images/sensei.png';
+// import sensei from '../public/images/sensei.png';
 import { Box, Button, Container, Grid, Tooltip } from '@mui/material';
-import Image from 'next/image';
+// import Image from 'next/image';
 
-import constants from "../src/constants";
+//import constants from "../src/constants";
+import constants from "../src/constantsEng";
 const allTasks = constants.allTasks
 
 function categoryShow(task){
@@ -25,32 +26,32 @@ export default function GuideTalk(props) {
 
     function getSaying() {
         if (props.tabnumber == 0){
-            return "まずは家事を選択してね";
+            return "Select hoseworks.";
         }else if (props.tabnumber == 1){
-            return "あなたの ・担当家事 ・好き嫌い ・かかる時間 を教えてね";
+            return "Tell us (who is in charge), and your (like or dislike) and (time needed).                                                                  ";
         }else if (props.tabnumber == 2){
-            return "パートナーの ・好き嫌い ・かかる時間 を教えてね 　　　";
+            return "Tell us your partner's (like or dislike) and (time needed).                                                            ";
         }else {
             if (props.tabtabnumber == 0){
                 if (props.changeOrUnchageLeast=='unchanged'){
-                    return "今の家事分担です";
+                    return "This is current sharing.";
                 }else{
-                    return "今の家事分担です";
+                    return "This is current sharing.";
                 }
             }else if (props.tabtabnumber==1){
                 if (props.changeOrUnchageLeast == 'unchanged'){
-                    return "今の分担は既におおよそ公平です";
+                    return "Current sharing satidfies EF1, which means almost fair.";
                 }else{
                     let category = categoryShow(props.changedListLeast[0]);
-                    return `少し変更しました\n「${ category }」の見直しはどうでしょう`;
+                    return `Current sharing is slightly modified.\n How about considering ''${ category }''?`;
                 }
             }else{
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
-                    return "今の分担は既におおよそ公平です";
+                    return "Current sharing satidfies EF1, which means almost fair.";
                 }else if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'changed'){
-                    return "例えば、これが理想の分担のひとつです\nこちらも公平ですね";
+                    return "This is another allocation satisfies EF1.";
                 }else{
-                    return "例えば、これが理想の分担のひとつです";
+                    return "This is one of the allocations satisfies EF1, which means almost fair.";
                 }
             }
         }        
@@ -58,7 +59,7 @@ export default function GuideTalk(props) {
     
     return (
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'start', marginBottom: '1.5em'}}>
-            <Image alt="introduction" src={sensei} width={102} height={102}></Image>
+            {/* <Image alt="introduction" src={sensei} width={102} height={102}></Image> */}
             <Box sx={{
                 backgroundColor: 'lightgrey',
                 borderRadius: '5px',

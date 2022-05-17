@@ -1,6 +1,7 @@
 import { Chip, Avatar } from "@mui/material"
 import { styled } from "@mui/system"
-import constants from "../src/constants";
+//import constants from "../src/constants";
+import constants from "../src/constantsEng";
 
 const ListItem = styled("li")(({theme}) => ({margin: theme.spacing(0.5)}))
 

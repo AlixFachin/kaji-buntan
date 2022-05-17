@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Checkbox, Collapse, List, ListItemIcon, ListItemButton, ListItemText, ListItemAvatar, Avatar } from "@mui/material"
 import TaskListItem from "./taskListItem"
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function TaskCategoryListItem(props) {
     const computeCheckState = () => {

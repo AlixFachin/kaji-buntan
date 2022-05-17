@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import { Bar, Chart } from 'react-chartjs-2';
 import React from "react";
-import constants from "../src/constants";
+//import constants from "../src/constants";
+import constants from "../src/constantsEng";
 import calculateBurden from "../src/calculateBurden";
 // import { Chart as ChartJS, registerables } from 'chart.js';
 // if(registerables){

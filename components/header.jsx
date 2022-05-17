@@ -6,14 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-import logoHorizon from '../public/images/logo_horizontal.png';
-import Image from 'next/image';
+// import logoHorizon from '../public/images/logo_horizontal.png';
+// import Image from 'next/image';
 
 export default function ButtonAppBar() {
 
     return (
         <header>
-            <Image src={logoHorizon} alt="Application Logo" height={'100px'} width={'588px'} layout='fixed'></Image>
+            {/* <Image src={logoHorizon} alt="Application Logo" height={'100px'} width={'588px'} layout='fixed'></Image> */}
         </header>
         /*<Box>
             <AppBar position="static">

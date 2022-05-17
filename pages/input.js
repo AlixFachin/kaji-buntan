@@ -11,7 +11,8 @@ import { useState } from 'react';
 
 import { DateTime } from 'luxon';
 
-import constants from "../src/constants";
+//import constants from "../src/constants";
+import constants from "../src/constantsEng";
 
 import makeAliceBobUtility from "../src/mainAlgorithm";
 import AllocationList from 'components/allocationList';
@@ -160,10 +161,10 @@ export default function InputPage() {
     return (
         <div className={styles.inputPanel}>
             <Tabs value={currentTab} sx={{ position: 'sticky', top: '10px', backgroundColor: 'white', zIndex: 50000, borderRadius: '5px' }} onChange={ (_, newValue) => setCurrentTab(newValue) }>
-                <Tab label="家事選択" sx={{ backgroundColor: 'white'}} />
-                <Tab label="私の評価" sx={{ backgroundColor: 'white'}}/>
-                <Tab label="パートナーの評価" sx={{ backgroundColor: 'white'}}/>
-                <Tab label="コンシェルジュの提案" sx={{ backgroundColor: 'white'}}/>
+                <Tab label="SELECT HOMEWORK" sx={{ backgroundColor: 'white'}} />
+                <Tab label="MY VALUATION" sx={{ backgroundColor: 'white'}}/>
+                <Tab label="PARTNER'S VALUATION" sx={{ backgroundColor: 'white'}}/>
+                <Tab label="PROPOSAL" sx={{ backgroundColor: 'white'}}/>
             </Tabs>
             
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>

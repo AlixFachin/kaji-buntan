@@ -3,14 +3,14 @@ import styles from 'styles/input.module.css';
 import { useEffect, useState } from 'react';
 import { ToggleButton, ToggleButtonGroup, Slider } from '@mui/material';
 
-import bad from '../public/images/bad.png';
-import soso from '../public/images/soso.png';
-import good from '../public/images/good.png';
-import neutral from '../public/images/neutral.svg';
-import happy from '../public/images/happy.svg';
-import unhappy from '../public/images/unhappy.svg';
+// import bad from '../public/images/bad.png';
+// import soso from '../public/images/soso.png';
+// import good from '../public/images/good.png';
+// import neutral from '../public/images/neutral.svg';
+// import happy from '../public/images/happy.svg';
+// import unhappy from '../public/images/unhappy.svg';
 
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function InputItem(props) {
 
@@ -23,19 +23,19 @@ export default function InputItem(props) {
     const sliderMarks = [
         {
             value: 10,
-            label: '10分',
+            label: '10m',
         },
         {
             value: 30,
-            label: '30分',
+            label: '30m',
         },
         {
             value: 60,
-            label: '60分',
+            label: '60m',
         },
         {
             value: 90,
-            label: '90分',
+            label: '90m',
         }
     ];
 
@@ -58,22 +58,20 @@ export default function InputItem(props) {
                         if (newValue !== null) setDoingTask(newValue);
                     }}
             aria-label="タスク担当かどうか">
-            <ToggleButton value={true} aria-label="する"><font size="1.5">する</font></ToggleButton>
-            <ToggleButton value={false} aria-label="しない"><font size="1.5">しない</font></ToggleButton>
+            <ToggleButton value={true} aria-label="する"><font size="1">DO</font></ToggleButton>
+            <ToggleButton value={false} aria-label="しない"><font size="1">DO NOT</font></ToggleButton>
         </ToggleButtonGroup>
-
         <ToggleButtonGroup value={happyLevel} sx={{ gridArea: 'effort' }} color="secondary" exclusive
             onChange={ (_, newValue) => {
                 if (newValue !== null) setHappyLevel(newValue);
             }}>
-            {/* <ToggleButton value={-1}>👎</ToggleButton>
-            <ToggleButton value={0}>👌</ToggleButton>
-            <ToggleButton value={-1}>👍</ToggleButton> */}
-            <ToggleButton value={-1} sx={{ padding: '5px' }} ><Image alt="introduction" src={unhappy} width={30} height={30}></Image></ToggleButton>
+            <ToggleButton value={-1}><font size="1">Dis</font></ToggleButton>
+            <ToggleButton value={0}><font size="1">OK</font></ToggleButton>
+            <ToggleButton value={1}><font size="1">Like</font></ToggleButton>
+            {/* <ToggleButton value={-1} sx={{ padding: '5px' }} ><Image alt="introduction" src={unhappy} width={30} height={30}></Image></ToggleButton>
             <ToggleButton value={0} sx={{ padding: '5px' }}><Image alt="introduction" src={neutral} width={30} height={30}></Image></ToggleButton>
-            <ToggleButton value={1} sx={{ padding: '5px' }}><Image alt="introduction" src={happy} width={30} height={30}></Image></ToggleButton>
+            <ToggleButton value={1} sx={{ padding: '5px' }}><Image alt="introduction" src={happy} width={30} height={30}></Image></ToggleButton> */}
         </ToggleButtonGroup>
-
         <Slider
             value={ taskTime }
             sx={{ gridArea: 'duration', marginLeft: '1em' }}
