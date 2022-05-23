@@ -16,12 +16,26 @@ export default function ResultDashboard(props) {
     <Grid item xs={6} cellHeight={200} width ={350} justifyContent="flex-end">
       <b><font size="6">私</font></b><Image alt="introduction" src={myillust} width={52} height={52}></Image>
       <MakePieChart head="私"  value={props.value} changedList={props.changedList} current={props.current}></MakePieChart>
-      <AllocationList head="私" data={props.mydata} changedList={props.changedList} current={props.current}></AllocationList>
+      <AllocationList 
+        head="私" 
+        data={props.mydata} 
+        changedList={props.changedList} 
+        current={props.current}
+        tabtabnumber={props.tabtabnumber}
+        repartition={props.repartition}
+      ></AllocationList>
       </Grid>
     <Grid item xs={6} cellHeight={200} width ={350} justifyContent="flex-end">
        <b><font size="6">パートナー</font></b><Image alt="introduction" src={partnerillust} width={52} height={52}></Image>
         <MakePieChart head="パートナー" value={props.value} changedList={props.changedList} current={props.current}></MakePieChart>
-        <AllocationList head="パートナー" data={props.partnerdata} changedList={props.changedList} current={props.current}></AllocationList>
+        <AllocationList 
+          head="パートナー" 
+          data={props.partnerdata}
+          changedList={props.changedList} 
+          current={props.current}
+          tabtabnumber={props.tabtabnumber}
+          repartition={props.repartition}
+        ></AllocationList>
       </Grid>
     </Grid>
     {/* <ResultTableComponent value={props.value}></ResultTableComponent> */}

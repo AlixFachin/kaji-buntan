@@ -43,24 +43,24 @@ function TabPanel(props) {
 const allTasks = constants.allTasks
 
 
-function makeBothAllocation(TaskRepartition){
-    let aliceAllocation = [];
-    let bobAllocation = [];
-    for (let category of allTasks){
-        for (let task of category.children){
-            if (task.checked){
-                const myTask1 = TaskRepartition['myTasks'][task.name];
-                const partnerTask1 = TaskRepartition['partnerTasks'][task.name];
-                if (myTask1 && myTask1.participates){
-                    aliceAllocation.push(task.name);
-                }else if (partnerTask1 && partnerTask1.participates){
-                    bobAllocation.push(task.name);
-                }
-            }
-        }
-    }
-    return [aliceAllocation,bobAllocation];
-}
+// function makeBothAllocation(TaskRepartition){
+//     let aliceAllocation = [];
+//     let bobAllocation = [];
+//     for (let category of allTasks){
+//         for (let task of category.children){
+//             if (task.checked){
+//                 const myTask1 = TaskRepartition['myTasks'][task.name];
+//                 const partnerTask1 = TaskRepartition['partnerTasks'][task.name];
+//                 if (myTask1 && myTask1.participates){
+//                     aliceAllocation.push(task.name);
+//                 }else if (partnerTask1 && partnerTask1.participates){
+//                     bobAllocation.push(task.name);
+//                 }
+//             }
+//         }
+//     }
+//     return [aliceAllocation,bobAllocation];
+// }
 
 export default function InputPage() {
 
@@ -149,13 +149,13 @@ export default function InputPage() {
 
     
     //console.log(allTasks, currentTaskRepartition);
-    let [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
+    //let [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
     //console.log(adjustedWinnerTaskRepartition);
     //console.log(leastChangeAllocationTaskRepartition);
     
-    let [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition);
-    let [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition);
-    let [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition);
+    // let [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition);
+    // let [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition);
+    // let [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition);
     
     return (
         <div className={styles.inputPanel}>
@@ -184,14 +184,7 @@ export default function InputPage() {
             <TabPanel value={ currentTab } index={3} sx={{ width: 1}}>
               <ResultTabComponent
                 currentTaskRepartition={ currentTaskRepartition }
-                currentAliceAllocation={ currentAliceAllocation }
-                currentBobAllocation={ currentBobAllocation }
-                adjustedWinnerAliceAllocation={ adjustedWinnerAliceAllocation }
-                adjustedWinnerBobAllocation={ adjustedWinnerBobAllocation }
-                adjustedWinnerTaskRepartition={ adjustedWinnerTaskRepartition }
-                leastChangeAliceAllocation={ leastChangeAliceAllocation }
-                leastChangeBobAllocation={ leastChangeBobAllocation }
-                leastChangeAllocationTaskRepartition={ leastChangeAllocationTaskRepartition }
+                allTasks={ allTasks }
               >
               </ResultTabComponent>
             </TabPanel>
