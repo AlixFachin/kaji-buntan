@@ -39,18 +39,18 @@ export default function GuideTalk(props) {
                 }
             }else if (props.tabtabnumber==1){
                 if (props.changeOrUnchageLeast == 'unchanged'){
-                    return "今の分担は既におおよそ公平です";
+                    return "今の分担は既におおよそ公平です\n\n下のアイコンをクリックすると自分で入替られるよ";
                 }else{
                     let category = categoryShow(props.changedListLeast[0]);
-                    return `少し変更しました\n「${ category }」の見直しはどうでしょう`;
+                    return `少し変更しました\n「${ category }」の見直しはどうでしょう\n\n下のアイコンをクリックすると自分で入替られるよ`;
                 }
             }else{
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){
-                    return "今の分担は既におおよそ公平です";
+                    return "今の分担は既におおよそ公平です\n\n下のアイコンをクリックすると入替られるよ";
                 }else if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'changed'){
-                    return "例えば、これが理想の分担のひとつです\nこちらも公平ですね";
+                    return "例えば、これが理想の分担のひとつです\nこちらも公平ですね\n\n下のアイコンをクリックすると自分で入替られるよ";
                 }else{
-                    return "例えば、これが理想の分担のひとつです";
+                    return "例えば、これが理想の分担のひとつです\n\n下のアイコンをクリックすると自分で入替られるよ";
                 }
             }
         }        

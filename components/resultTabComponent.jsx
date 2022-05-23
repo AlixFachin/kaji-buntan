@@ -37,15 +37,21 @@ export default function ResultTabComponent(props) {
 
   const { currentTaskRepartition, allTasks, setTaskRepartition } = props;
   const [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition, allTasks);
+  const [currentRepartition, setCurrentRepartition] = useState(currentTaskRepartition);
+
 
   // calculate initial state
-  const [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
+  const [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentRepartition);
   const [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition, allTasks);
   const [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition, allTasks);
 
-  const [currentRepartition, setCurrentRepartition] = useState(currentTaskRepartition);
+  let [changeOrUnchageLeast, changedListLeast] = detectAllocationChange(currentRepartition, leastChangeAllocationTaskRepartition);
+  let [changeOrUnchageAW, changedListAW] = detectAllocationChange(currentRepartition, adjustedWinnerTaskRepartition);
+
   const [adjustedRepartition, setAdjustedRepartition] = useState(adjustedWinnerTaskRepartition);
   const [leastRepartition, setLeastRepartition] = useState(leastChangeAllocationTaskRepartition);
+
+  
   const [adjustedAliceAllocation, setAdjustedAliceAllocation] = useState(adjustedWinnerAliceAllocation);
   const [adjustedBobAllocation, setAdjustedBobAllocation] = useState(adjustedWinnerBobAllocation);
   const [leastAliceAllocation, setLeastAliceAllocation] = useState(leastChangeAliceAllocation);
@@ -61,17 +67,17 @@ export default function ResultTabComponent(props) {
     setLeastBobAllocation(leastChangeBobAllocation);
   }, [adjustedRepartition, leastRepartition, hoge]);
 
-  let [changeOrUnchageLeast, changedListLeast] = detectAllocationChange(currentTaskRepartition, leastChangeAllocationTaskRepartition);
-  let [changeOrUnchageAW, changedListAW] = detectAllocationChange(currentTaskRepartition, adjustedWinnerTaskRepartition);
+  
 
 
   const changeRepartition = (person, taskName, tabtabnumber) => {
     let TaskRepartition = {}
     let setRepartition = null
-    if (tabtabnumber == "0") {
-      TaskRepartition = currentRepartition
-      setRepartition = setCurrentRepartition
-    } else if (tabtabnumber == "1") {
+    // if (tabtabnumber == "0") {
+    //   //TaskRepartition = currentRepartition
+    //   //setRepartition = setCurrentRepartition
+    // } else 
+    if (tabtabnumber == "1") {
       TaskRepartition = leastRepartition 
       setRepartition = setLeastRepartition
     } else if (tabtabnumber == "2") {
@@ -86,7 +92,6 @@ export default function ResultTabComponent(props) {
     let selectedParticipate = TaskRepartition[selectedPerson][taskName]['participates']
     TaskRepartition[selectedPerson][taskName]['participates'] = TaskRepartition[anotherPerson][taskName]['participates']
     TaskRepartition[anotherPerson][taskName]['participates'] = selectedParticipate
-
     setRepartition(TaskRepartition)
     setHoge(hoge+1);
   }
@@ -107,6 +112,8 @@ export default function ResultTabComponent(props) {
           current={"current"}
           tabtabnumber={"0"}
           repartition={changeRepartition}
+          currentTaskRepartition = {currentTaskRepartition} 
+          allTasks = {allTasks}
         ></ResultDashboard>
         {/* <AllocationList head="私" data={props.currentAliceAllocation}></AllocationList>
         <AllocationList head="パートナー" data={props.currentBobAllocation}></AllocationList> */}
@@ -121,6 +128,8 @@ export default function ResultTabComponent(props) {
           current={"not current"}
           tabtabnumber={"1"}
           repartition={changeRepartition}
+          currentTaskRepartition = {currentTaskRepartition} 
+          allTasks = {allTasks}
         ></ResultDashboard>
         {/* <AllocationList head="私" data={props.leastChangeAliceAllocation}></AllocationList>
         <AllocationList head="パートナー" data={props.leastChangeBobAllocation}></AllocationList> */}
@@ -135,6 +144,8 @@ export default function ResultTabComponent(props) {
           current={"not current"}
           tabtabnumber={"2"}
           repartition={changeRepartition}
+          currentTaskRepartition = {currentTaskRepartition} 
+          allTasks = {allTasks}
         ></ResultDashboard>
         {/* <AllocationList head="私" data={props.adjustedWinnerAliceAllocation}></AllocationList>
         <AllocationList head="パートナー" data={props.adjustedWinnerBobAllocation}></AllocationList> */}
