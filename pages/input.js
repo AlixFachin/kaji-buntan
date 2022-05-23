@@ -161,7 +161,7 @@ export default function InputPage() {
     return (
         <div className={styles.inputPanel}>
             <Tabs value={currentTab} sx={{ position: 'sticky', top: '10px', backgroundColor: 'white', zIndex: 50000, borderRadius: '5px' }} onChange={ (_, newValue) => setCurrentTab(newValue) }>
-                <Tab label="SELECT HOMEWORK" sx={{ backgroundColor: 'white'}} />
+                <Tab label="SELECT HOUSEWORK" sx={{ backgroundColor: 'white'}} />
                 <Tab label="MY VALUATION" sx={{ backgroundColor: 'white'}}/>
                 <Tab label="PARTNER'S VALUATION" sx={{ backgroundColor: 'white'}}/>
                 <Tab label="PROPOSAL" sx={{ backgroundColor: 'white'}}/>

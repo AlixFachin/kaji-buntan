@@ -26,11 +26,11 @@ export default function GuideTalk(props) {
 
     function getSaying() {
         if (props.tabnumber == 0){
-            return "Select hoseworks.";
+            return "Select houseworks.";
         }else if (props.tabnumber == 1){
-            return "Tell us (who is in charge), and your (like or dislike) and (time needed).                                                                  ";
+            return "Tell me (who is in charge), and your (like or dislike) and (time needed).                                                                  ";
         }else if (props.tabnumber == 2){
-            return "Tell us your partner's (like or dislike) and (time needed).                                                            ";
+            return "Tell me your partner's (like or dislike) and (time needed).                                                            ";
         }else {
             if (props.tabtabnumber == 0){
                 if (props.changeOrUnchageLeast=='unchanged'){
@@ -51,7 +51,7 @@ export default function GuideTalk(props) {
                 }else if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'changed'){
                     return "This is another allocation satisfies EF1.";
                 }else{
-                    return "This is one of the allocations satisfies EF1, which means almost fair.";
+                    return "This is one of the allocations satisfies EF1 and PO, which means almost fair.";
                 }
             }
         }        

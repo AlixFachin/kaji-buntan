@@ -21,9 +21,9 @@ export default function ResultTabComponent(props) {
   return (
     <TabContext value={tabNum}>
       <TabList onChange={handleChangeTab}>
-        <Tab label="Current Charge" value="1" />
-        <Tab label="Little Modified" value="2" />
-        <Tab label="Alomost Fair" value="3" />
+        <Tab label="Current Allocation" value="1" />
+        <Tab label="Modified Allocation" value="2" />
+        <Tab label="AW alg. result" value="3" />
       </TabList>
       <TabPanel value="1" sx={{ width: 1}}>
       <GuideTalk tabnumber = {3} tabtabnumber={0} changeOrUnchageLeast={changeOrUnchageLeast}></GuideTalk>
