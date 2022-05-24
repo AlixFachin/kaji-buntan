@@ -12,56 +12,56 @@ const myBackColorBorder = constants.myBackColorBorder
 const partnerBackColorBorder = constants.partnerBackColorBorder
 
 export default function AllocationChip(props) {
-  // let categoryColor;
-  // for (let categoryObject of allTasks) {
-  //     for (let taskObject of categoryObject.children) {
-  //       if (taskObject.name == props.label){
-  //         categoryColor = backgroundColorList[categoryObject.name];
-  //       }
-  //     }
-  // }
   let backColor;
   let avatar;
-  if (props.myORpartner == '私'){
+  if (props.person == '私'){
     backColor = myBackColor;
     avatar = '../avatar/myAvatar.png';
-  }else if(props.myORpartner == 'パートナー'){
+  }else if(props.person == 'パートナー'){
     backColor = partnerBackColor;
     avatar = '../avatar/partnerAvatar.png';
   }
-  //console.log(backColor);
-  //console.log(props.changedList);
   let changedList = props.changedList;
   if (props.current != "current"){
-    //console.log(changedList);
     if (changedList.includes(props.label)){
-      return (<ListItem><Chip 
+      return (<ListItem>
+        <Chip 
         sx = {{
           backgroundColor: backColor,
         }} 
         avatar={<Avatar src = { avatar }></Avatar>}
-        label={props.label}>
-          </Chip><div><text style={{color: "rgba(100,185,50)"}}>変更</text></div>
-          </ListItem>
+        label={props.label}
+        onClick={() => props.repartition(props.person, props.label, props.tabtabnumber)}
+        >
+        </Chip><div><b style={{color: "rgba(100,185,50)"}}>変更</b></div>
+        </ListItem>
         )
     }else{
-      return (<ListItem><Chip 
+      return (<ListItem>
+        <Chip 
         sx = {{
           backgroundColor: backColor,
         }} 
         avatar={<Avatar src = { avatar }></Avatar>}
-        label={props.label}>
-          </Chip></ListItem>
+        label={props.label}
+        onClick={() => props.repartition(props.person, props.label, props.tabtabnumber)}
+        >
+        </Chip>
+        </ListItem>
         )
     }
   }else{
-    return (<ListItem><Chip 
+    return (<ListItem>
+      <Chip 
       sx = {{
         backgroundColor: backColor,
       }} 
       avatar={<Avatar src = { avatar }></Avatar>}
-      label={props.label}>
-        </Chip></ListItem>
+      label={props.label}
+      onClick={() => props.repartition(props.person, props.label, props.tabtabnumber)}
+      >
+      </Chip>
+      </ListItem>
       )
   }
 }
