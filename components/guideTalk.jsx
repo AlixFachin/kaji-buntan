@@ -1,4 +1,3 @@
-import List from '@mui/material/List';
 import TaskCategoryListItem from './taskCategoryListItem';
 import sensei from '../public/images/sensei.png';
 import { Box, Button, Container, Grid, Tooltip } from '@mui/material';

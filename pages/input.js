@@ -18,6 +18,8 @@ import AllocationList from 'components/allocationList';
 
 import GuideTalk from 'components/guideTalk';
 
+import InputForm  from 'components/addKajiTask';
+
 // TabPanel -> https://mui.com/material-ui/react-tabs/
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -169,6 +171,7 @@ export default function InputPage() {
             <TabPanel value={ currentTab } index={0} sx={{ width: 1}}>
                 <br/>
                 <GuideTalk tabnumber={0}></GuideTalk>
+                <InputForm></InputForm>
                 <TaskCategoryList taskTree={allTasks} onChange={handleChangeTasks}></TaskCategoryList>
             </TabPanel>
             <TabPanel value={ currentTab } index={1} sx={{ width: 1}} >
