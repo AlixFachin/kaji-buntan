@@ -35,18 +35,16 @@ export default function ResultTabComponent(props) {
     setTabNum(newValue);
   }
 
-  const { currentTaskRepartition, allTasks, setTaskRepartition } = props;
+  const { currentTaskRepartition, allTasks } = props;
   const [currentAliceAllocation, currentBobAllocation] = makeBothAllocation(currentTaskRepartition, allTasks);
-  const [currentRepartition, setCurrentRepartition] = useState(currentTaskRepartition);
+
 
 
   // calculate initial state
-  const [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentRepartition);
+  const [adjustedWinnerTaskRepartition, leastChangeAllocationTaskRepartition] = makeAliceBobUtility(allTasks, currentTaskRepartition);
   const [adjustedWinnerAliceAllocation, adjustedWinnerBobAllocation] = makeBothAllocation(adjustedWinnerTaskRepartition, allTasks);
   const [leastChangeAliceAllocation, leastChangeBobAllocation] = makeBothAllocation(leastChangeAllocationTaskRepartition, allTasks);
 
-  let [changeOrUnchageLeast, changedListLeast] = detectAllocationChange(currentRepartition, leastChangeAllocationTaskRepartition);
-  let [changeOrUnchageAW, changedListAW] = detectAllocationChange(currentRepartition, adjustedWinnerTaskRepartition);
 
   const [adjustedRepartition, setAdjustedRepartition] = useState(adjustedWinnerTaskRepartition);
   const [leastRepartition, setLeastRepartition] = useState(leastChangeAllocationTaskRepartition);
@@ -73,14 +71,12 @@ export default function ResultTabComponent(props) {
   const changeRepartition = (person, taskName, tabtabnumber) => {
     let TaskRepartition = {}
     let setRepartition = null
-    // if (tabtabnumber == "0") {
-    //   //TaskRepartition = currentRepartition
-    //   //setRepartition = setCurrentRepartition
+    // console.log(tabtabnumber)
+    // if (tabtabnumber == "1") {
+    //   TaskRepartition = leastRepartition 
+    //   setRepartition = setLeastRepartition
     // } else 
-    if (tabtabnumber == "1") {
-      TaskRepartition = leastRepartition 
-      setRepartition = setLeastRepartition
-    } else if (tabtabnumber == "2") {
+    if (tabtabnumber == "2") {
       TaskRepartition = adjustedRepartition
       setRepartition = setAdjustedRepartition
     } else {
@@ -95,6 +91,9 @@ export default function ResultTabComponent(props) {
     setRepartition(TaskRepartition)
     setHoge(hoge+1);
   }
+
+  let [changeOrUnchageLeast, changedListLeast] = detectAllocationChange(currentTaskRepartition, leastChangeAllocationTaskRepartition);
+  let [changeOrUnchageAW, changedListAW] = detectAllocationChange(currentTaskRepartition, adjustedWinnerTaskRepartition);
 
   return (
     <TabContext value={tabNum}>

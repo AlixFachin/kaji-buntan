@@ -38,10 +38,10 @@ export default function GuideTalk(props) {
                 }
             }else if (props.tabtabnumber==1){
                 if (props.changeOrUnchageLeast == 'unchanged'){
-                    return "今の分担は既におおよそ公平です\n\n下のアイコンをクリックすると自分で入替られるよ";
+                    return "今の分担は既におおよそ公平です";
                 }else{
                     let category = categoryShow(props.changedListLeast[0]);
-                    return `少し変更しました\n「${ category }」の見直しはどうでしょう\n\n下のアイコンをクリックすると自分で入替られるよ`;
+                    return `少し変更しました\n「${ category }」の見直しはどうでしょう`;
                 }
             }else{
                 if (props.changeOrUnchageLeast == 'unchanged' && props.changeOrUnchageAW == 'unchanged'){

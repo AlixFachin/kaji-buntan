@@ -252,7 +252,7 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
                 }
             }
         }
-        console.log("Output of the least exchange algorithm", { myTasks: myTasks, partnerTasks: partnerTasks})
+        //console.log("Output of the least exchange algorithm", { myTasks: myTasks, partnerTasks: partnerTasks})
       return { myTasks: myTasks, partnerTasks: partnerTasks};
     }
 }

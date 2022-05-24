@@ -33,7 +33,7 @@ export default function AllocationChip(props) {
         label={props.label}
         onClick={() => props.repartition(props.person, props.label, props.tabtabnumber)}
         >
-        </Chip><div><b style={{color: "rgba(237,185,24)"}}>CHANGED</b></div>
+        </Chip><div><b style={{color: "rgba(100,185,50)"}}>変更</b></div>
         </ListItem>
         )
     }else{
