@@ -339,11 +339,11 @@ function leastChangeAllocation(aliceUtility,bobUtility,aliceAllocation, bobAlloc
             bobAllocation.push(taskList[alist[0][0]]);
         }
         //console.log(`AliceAllocation: ${aliceAllocation}, BobAllocation: ${bobAllocation}`);
-
         let myTasks = {};
         let partnerTasks = {};
         [myTasks, partnerTasks] = makeTaskRepartiton(aliceAllocation, bobAllocation, currentTaskRepartition)
-        console.log("Output of the least exchange algorithm", { myTasks: myTasks, partnerTasks: partnerTasks})
+        //console.log("Output of the least exchange algorithm", { myTasks: myTasks, partnerTasks: partnerTasks})
+      
       return { myTasks: myTasks, partnerTasks: partnerTasks};
     }
 }
