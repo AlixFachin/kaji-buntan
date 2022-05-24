@@ -15,9 +15,19 @@ export default function AllocationList(props) {
         listStyle: "none",
         m: 0.5,
         p: 0
-      }} component="ul">
+      }} component="ul"
+      >
         {
-          props.data.map((d, i) => <AllocationChip key={i} label={d} myORpartner = {props.head} changedList={props.changedList} current={props.current}></AllocationChip>)
+          props.data.map((d, i) => 
+            <AllocationChip 
+              key={i} 
+              label={d} 
+              person = {props.head} 
+              changedList={props.changedList} 
+              current={props.current}
+              tabtabnumber={props.tabtabnumber}
+              repartition={props.repartition}
+            ></AllocationChip>)
         }
       </Box>
     </Grid>
